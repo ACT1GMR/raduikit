@@ -11,7 +11,7 @@ npm run start
 ## Installation
 
 ```
-npm install  --save
+npm install raduikit --save
 ```
 
 ## Usage
