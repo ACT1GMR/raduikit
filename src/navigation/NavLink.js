@@ -2,7 +2,7 @@
 import React, {Component} from "react";
 import classnames from "classnames";
 import {Link} from 'react-router-dom';
-import style from "../../styles/modules/navigation/NavigationItem.scss";
+import style from "../../styles/modules/navigation/NavLink.scss";
 import {NavLink} from 'reactstrap';
 
 export default class NavigationItem extends Component {
@@ -19,13 +19,13 @@ export default class NavigationItem extends Component {
   render() {
     const {href, to} = this.props;
     let navConfig = {};
-    if(href) {
+    if (href) {
       navConfig.href = href;
     } else {
       navConfig.to = to
     }
     return (
-        <NavLink tag={Link} {...navConfig}/>
+      <NavLink tag={Link} {...navConfig}/>
     )
   }
 }

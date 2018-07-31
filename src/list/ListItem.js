@@ -7,8 +7,9 @@ export default class ListItem extends Component {
 
   static defaultProps = {
     selection: false,
+    invert: false,
     active: false,
-    onClick: null
+    onSelect: e=>{}
   };
 
   constructor(props) {
@@ -16,11 +17,11 @@ export default class ListItem extends Component {
   }
 
   render() {
-    const {selection, active} = this.props;
-    let classNames = classnames({[style["ListItem--selection"]]: selection, [style["ListItem--active"]]: active});
+    const {selection, active, invert} = this.props;
+    let classNames = classnames({[style["ListItem--Selection"]]: selection, [style["ListItem--Active"]]: active, [style["ListItem--Invert"]]: invert});
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <li className={`${style.ListItem}${classNames}`} onClick={this.props.onClick}>
+      <li className={`${style.ListItem}${classNames}`} onClick={this.props.onSelect}>
         {this.props.children}
       </li>
     );

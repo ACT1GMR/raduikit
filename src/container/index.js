@@ -23,8 +23,11 @@ export default class Container extends Component {
     topLeft: false,
     topCenter: false,
     inSpace: false,
-    onMouseOver:e => {},
-    onMouseLeave:e => {}
+    className: null,
+    onMouseOver: e => {
+    },
+    onMouseLeave: e => {
+    }
   };
 
   constructor(props) {
@@ -32,7 +35,7 @@ export default class Container extends Component {
   }
 
   render() {
-    const {inline, leftTextAlign, centerTextAlign, maxWidth, relative, absolute, centerLeft, centerRight, center, bottomRight, bottomLeft, bottomCenter, topRight, topLeft, topCenter, inSpace, left, onMouseOver, onMouseLeave} = this.props;
+    const {className, inline, leftTextAlign, centerTextAlign, maxWidth, minWidth, relative, absolute, centerLeft, centerRight, center, bottomRight, bottomLeft, bottomCenter, topRight, topLeft, topCenter, inSpace, left, onMouseOver, onMouseLeave} = this.props;
     let classNames = classnames({
       [style["Container--inline"]]: inline,
       [style["Container--relative"]]: relative,
@@ -52,11 +55,22 @@ export default class Container extends Component {
       [utilsStyle["u-centerTextAlign"]]: centerTextAlign
     });
     if (classNames) classNames = ` ${classNames}`;
-    return (
-      <div className={`${style.Container}${classNames}`} style={{maxWidth: `${maxWidth ? `${maxWidth}` : "auto"}`}} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
+    const container = (
+      <div className={`${style.Container}${classNames}`}
+           style={{maxWidth: `${maxWidth ? maxWidth : "auto"}`, minWidth: `${minWidth ? minWidth : "auto"}`}}
+           onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
         {this.props.children}
       </div>
     );
+    if (className) {
+      return (
+        <div className={className}>
+          {container}
+        </div>
+      );
+    }
+    return container;
+
   }
 }
 

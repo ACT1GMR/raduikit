@@ -1,8 +1,7 @@
 import React, {Component} from "react";
-import NavItem from "./NavItem";
-import NavbarToggler from "./NavbarToggler";
+import Dropdown from "./Dropdown";
+import DropdownItem from "./DropdownItem";
 import style from "../../styles/modules/navigation/index.scss";
-import {Nav} from 'reactstrap';
 
 export default class Menu extends Component {
 
@@ -29,4 +28,4 @@ export default class Menu extends Component {
   }
 }
 
-export {NavItem, NavbarToggler};
+export {Dropdown, DropdownItem};

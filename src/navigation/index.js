@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import NavItem from "./NavItem";
 import NavbarToggler from "./NavbarToggler";
 import style from "../../styles/modules/navigation/index.scss";
-import {Nav} from 'reactstrap';
+import {Nav, Collapse} from 'reactstrap';
 
 export default class Navigation extends Component {
 
