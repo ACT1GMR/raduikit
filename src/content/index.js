@@ -7,7 +7,9 @@ export default class Content extends Component {
 
   static defaultProps = {
     hasBackground: false,
-    borderRadius: 0
+    borderRadius: 0,
+    colorBackgroundDark: false,
+    colorBackground: false
   };
 
   constructor(props) {
@@ -15,8 +17,12 @@ export default class Content extends Component {
   }
 
   render() {
-    let {borderRadius, hasBackground} = this.props;
-    let classNames = classnames({[style["Content--hasBackground"]]: hasBackground});
+    let {borderRadius, hasBackground, colorBackgroundDark, colorBackground} = this.props;
+    let classNames = classnames({
+      [style["Content--hasBackground"]]: hasBackground,
+      [style["Content--colorBackgroundDark"]]: colorBackgroundDark,
+      [style["Content--colorBackground"]]: colorBackground
+    });
     if (classNames) classNames = ` ${classNames}`;
     return (
       <div className={`${style.Content}${classNames}`} style={{borderRadius: borderRadius}}>

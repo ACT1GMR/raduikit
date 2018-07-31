@@ -1,0 +1,38 @@
+.Text {
+  font-size: $font-size-base;
+  line-height: 2;
+  color: $color-text;
+}
+
+.Text--inline {
+  display: inline;
+}
+
+.Text--link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.Text--xs {
+  font-size: $font-size-tiny;
+}
+
+.Text--sm {
+  font-size: $font-size-small;
+}
+
+.Text--lg {
+  font-size: $font-size-large;
+}
+
+.Text--xlg {
+  font-size: $font-size-jumbo;
+}
+
+.Text--bold {
+  font-weight: bold;
+}
+
+.Text--italic {
+  font-style: italic;
+}
