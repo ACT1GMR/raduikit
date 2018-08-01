@@ -8,6 +8,7 @@ export default class Message extends Component {
     small: false,
     large: false,
     xLarge: false,
+    invert: false,
     src: null
   };
 
@@ -16,8 +17,13 @@ export default class Message extends Component {
   }
 
   render() {
-    const {small, large, xLarge} = this.props;
-    let classNames = classnames({[style["Message--sm"]]: small, [style["Message--lg"]]: large, [style["Message--xlg"]]: xLarge});
+    const {small, large, xLarge, invert} = this.props;
+    let classNames = classnames({
+      [style["Message--sm"]]: small,
+      [style["Message--lg"]]: large,
+      [style["Message--xlg"]]: xLarge,
+      [style["Message--invert"]]: invert
+    });
     if (classNames) classNames = ` ${classNames}`;
     return (
       <div className={`${style.Message}${classNames}`}>

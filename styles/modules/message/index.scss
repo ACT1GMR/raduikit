@@ -3,6 +3,10 @@
   font-size: $font-size-base;
 }
 
+.Message--invert {
+  color: $color-text-invert;
+}
+
 .Message--sm {
   font-size: $font-size-small;
 }
