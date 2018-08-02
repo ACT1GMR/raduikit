@@ -17,12 +17,15 @@ export default class Message extends Component {
   }
 
   render() {
-    const {small, large, xLarge, invert} = this.props;
+    const {small, large, xLarge, invert, warn, success, error} = this.props;
     let classNames = classnames({
       [style["Message--sm"]]: small,
       [style["Message--lg"]]: large,
       [style["Message--xlg"]]: xLarge,
-      [style["Message--invert"]]: invert
+      [style["Message--invert"]]: invert,
+      [style["Message--warn"]]: warn,
+      [style["Message--success"]]: success,
+      [style["Message--error"]]: error
     });
     if (classNames) classNames = ` ${classNames}`;
     return (

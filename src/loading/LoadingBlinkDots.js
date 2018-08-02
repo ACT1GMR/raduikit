@@ -20,7 +20,7 @@ export default class LoadingBlinkDots extends Component {
   render() {
     let {invert, large, xLarge, small} = this.props;
     let classNames = classnames({
-      [style["LoadingBlinkDots--Invert"]]: invert,
+      [style["LoadingBlinkDots--invert"]]: invert,
       [style["LoadingBlinkDots--lg"]]: large,
       [style["LoadingBlinkDots--xlg"]]: xLarge,
       [style["LoadingBlinkDots--sm"]]: small

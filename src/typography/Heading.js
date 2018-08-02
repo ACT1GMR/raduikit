@@ -16,7 +16,7 @@ export default class extends Component {
 
   render() {
     const {h2, h3, h4, h5, children, invert} = this.props;
-    let classNames = classnames({[style["Heading--Invert"]]: invert});
+    let classNames = classnames({[style["Heading--invert"]]: invert});
     if (classNames) classNames = ` ${classNames}`;
     classNames =`${style.Heading}${classNames}`;
     if (h2) {

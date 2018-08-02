@@ -10,6 +10,7 @@ export default class Container extends Component {
     inline: false,
     leftTextAlign: false,
     left: false,
+    right: false,
     centerTextAlign: false,
     relative: false,
     absolute: false,
@@ -36,7 +37,7 @@ export default class Container extends Component {
   }
 
   render() {
-    const {id, className, inline, leftTextAlign, centerTextAlign, maxWidth, minWidth, relative, absolute, centerLeft, centerRight, center, bottomRight, bottomLeft, bottomCenter, topRight, topLeft, topCenter, inSpace, left, onMouseOver, onMouseLeave} = this.props;
+    const {id, className, inline, leftTextAlign, centerTextAlign, maxWidth, minWidth, relative, absolute, centerLeft, centerRight, center, bottomRight, bottomLeft, bottomCenter, topRight, topLeft, topCenter, inSpace, left, right, onMouseOver, onMouseLeave} = this.props;
     let classNames = classnames({
       [style["Container--inline"]]: inline,
       [style["Container--relative"]]: relative,
@@ -52,6 +53,7 @@ export default class Container extends Component {
       [style["Container--topCenter"]]: topCenter,
       [style["Container--inSpace"]]: inSpace,
       [style["Container--left"]]: left,
+      [style["Container--right"]]: right,
       [utilsStyle["u-leftTextAlign"]]: leftTextAlign,
       [utilsStyle["u-centerTextAlign"]]: centerTextAlign
     });

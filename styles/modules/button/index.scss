@@ -25,6 +25,7 @@
 }
 
 .Button--xlg {
+  padding: 9px 36px;
 }
 
 .Button--colorPrimary {
@@ -32,13 +33,32 @@
   color: $color-white;
 }
 
-.Button--text {
+.Button--text,
+.Button--outlined
+{
   box-shadow: none;
   background-color: transparent;
   color: $color-accent;
 }
 
-.Button--text:hover {
-  background-color: rgba($color-accent, .8);
-  color: $color-white;
+.Button--text:hover,
+.Button--outlined:hover
+{
+  background-color: rgba($color-accent, .08);
+}
+
+.Button--outlined {
+  border: 1px solid rgba(0, 0, 0, 0.23);
+}
+
+.Button--disabled {
+  &.Button--text {
+    color: $color-text-light;
+  }
+}
+
+.Button--disabled:hover {
+  &.Button--text {
+    background-color: rgba($color-text-light, .08);
+  }
 }

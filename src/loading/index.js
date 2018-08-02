@@ -6,13 +6,23 @@ import classnames from "classnames";
 
 export default class Loading extends Component {
 
+  static defaultProps = {
+    hasSpace: false
+  };
+
   constructor(props) {
     super(props);
   }
 
   render() {
+    let {hasSpace} = this.props;
+    let classNames = classnames({
+      [style["Loading--hasSpace"]]: hasSpace
+    });
+    if (classNames) classNames = ` ${classNames}`;
+    classNames = `${style.Loading}${classNames}`;
     return (
-      <div className={style.Loading}>
+      <div className={classNames}>
         {this.props.children}
       </div>
     );

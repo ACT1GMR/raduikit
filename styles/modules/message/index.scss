@@ -7,6 +7,18 @@
   color: $color-text-invert;
 }
 
+.Message--warn {
+  color: $color-accent;
+}
+
+.Message--error {
+  color: $color-red;
+}
+
+.Message--success {
+  color: $color-green;
+}
+
 .Message--sm {
   font-size: $font-size-small;
 }
