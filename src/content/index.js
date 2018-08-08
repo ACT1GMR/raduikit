@@ -6,9 +6,9 @@ import ContentFooter from "./ContentFooter";
 export default class Content extends Component {
 
   static defaultProps = {
-    hasBackground: false,
     borderRadius: 0,
     colorBackgroundDark: false,
+    colorBackgroundLight: false,
     colorBackground: false
   };
 
@@ -17,9 +17,9 @@ export default class Content extends Component {
   }
 
   render() {
-    let {borderRadius, hasBackground, colorBackgroundDark, colorBackground} = this.props;
+    let {borderRadius, colorBackgroundLight, colorBackgroundDark, colorBackground} = this.props;
     let classNames = classnames({
-      [style["Content--hasBackground"]]: hasBackground,
+      [style["Content--colorBackgroundLight"]]: colorBackgroundLight,
       [style["Content--colorBackgroundDark"]]: colorBackgroundDark,
       [style["Content--colorBackground"]]: colorBackground
     });

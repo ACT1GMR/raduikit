@@ -4,7 +4,6 @@ import AvatarImage from "./AvatarImage";
 import AvatarName from "./AvatarName";
 import AvatarText from "./AvatarText";
 import style from "../../styles/modules/avatar/index.scss";
-import utilsStyle from "../../styles/utils/index.scss";
 import classnames from "classnames";
 
 export default class Avatar extends Component {
@@ -19,7 +18,7 @@ export default class Avatar extends Component {
 
   render() {
     let {left} = this.props;
-    let classNames = classnames({[style["Avatar--left"]]: left, [utilsStyle["u-leftTextAlign"]]: left});
+    let classNames = classnames({[style["Avatar--left"]]: left});
     if (classNames) classNames = ` ${classNames}`;
     return (
       <div className={`${style.Avatar}${classNames}`}>

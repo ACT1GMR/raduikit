@@ -3,14 +3,14 @@
   line-height: $line-height-base;
 }
 
-.Content--hasBackground {
-  background-color: $color-background-light;
-}
-
 .Content--colorBackgroundDark {
   background-color: $color-background-dark;
 }
 
 .Content--colorBackground {
   background-color: $color-background;
+}
+
+.Content--colorBackgroundLight {
+  background-color: $color-background-light;
 }
