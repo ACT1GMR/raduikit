@@ -2,23 +2,27 @@
   padding: 10px;
 }
 
-.ListItem--Selection {
+.ListItem--selection {
   cursor: pointer;
 }
 
-.ListItem--Selection:hover {
+.ListItem--selection:hover {
   background-color: $color-primary-light;
 }
 
-.ListItem--Active {
+.ListItem--active {
   background-color: $color-primary-light;
 }
 
-.ListItem--Invert {
-  &.ListItem--Selection:hover {
+.ListItem__Tick {
+  color: $color-accent;
+}
+
+.ListItem--invert {
+  &.ListItem--selection:hover {
     background-color: $color-background;
   }
-  &.ListItem--Active {
+  &.ListItem--active {
     background-color: $color-background;
   }
 }

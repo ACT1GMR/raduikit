@@ -31,7 +31,7 @@ export default class Button extends Component {
       [style["Button--xlg"]]: xlg,
       [style["Button--lg"]]: lg,
       [style["Button--sm"]]: sm,
-      [style["Button--xsm"]]: xsm,
+      [style["Button--xsm"]]: xsm
 
     });
     if (classNames) classNames = ` ${classNames}`;
