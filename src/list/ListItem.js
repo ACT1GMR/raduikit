@@ -2,7 +2,7 @@
 import React, {Component} from "react";
 import classnames from "classnames";
 import style from "../../styles/modules/list/ListItem.scss";
-import {MdCheck} from "react-icons/md";
+import {MdCheck} from "react-icons/lib/md";
 import Container from "../container";
 
 export default class ListItem extends Component {
