@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import style from "../../styles/modules/navigation/Dropdown.scss";
+import style from "../../styles/modules/menu/Dropdown.scss";
 import {MdClose} from "react-icons/lib/md";
 import classnames from "classnames";
 import List from "../list/index";

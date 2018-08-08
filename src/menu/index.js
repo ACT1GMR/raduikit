@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import Dropdown from "./Dropdown";
 import DropdownItem from "./DropdownItem";
-import style from "../../styles/modules/navigation/index.scss";
 
 export default class Menu extends Component {
 

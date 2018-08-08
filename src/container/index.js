@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import style from "../../styles/modules/container/index.scss"
-import utilsStyle from "../../styles/utils/index.scss"
 import classnames from "classnames";
 
 export default class Container extends Component {
@@ -54,8 +53,8 @@ export default class Container extends Component {
       [style["Container--inSpace"]]: inSpace,
       [style["Container--left"]]: left,
       [style["Container--right"]]: right,
-      [utilsStyle["u-leftTextAlign"]]: leftTextAlign,
-      [utilsStyle["u-centerTextAlign"]]: centerTextAlign
+      [style["Container-leftTextAlign"]]: leftTextAlign,
+      [style["Container-centerTextAlign"]]: centerTextAlign
     });
     if (classNames) classNames = ` ${classNames}`;
     const container = (
