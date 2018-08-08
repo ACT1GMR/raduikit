@@ -73,16 +73,6 @@ module.exports = (e, argv) => {
       library: "",
       libraryTarget: "commonjs"
     };
-    base.entry = {
-      "./avatar/index": "./src/avatar",
-      "./container/index": "./src/container",
-      "./content/index": "./src/content",
-      "./list/index": "./src/list",
-      "./loading/index": "./src/loading",
-      "./message/index": "./src/message",
-      "./navigation/index": "./src/navigation",
-      "./shape/index": "./src/shape"
-    }
   } else {
     base.devtool = "source-map";
   }
