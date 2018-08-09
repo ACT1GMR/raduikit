@@ -13,8 +13,10 @@ export default class ListItem extends Component {
     invert: false,
     active: false,
     activeWithTick: false,
-    onSelect: e => {},
-    onDeSelect: e => {}
+    onSelect: e => {
+    },
+    onDeSelect: e => {
+    }
   };
 
   constructor(props) {
@@ -23,9 +25,11 @@ export default class ListItem extends Component {
 
   onClick() {
     const {multiple, active, onSelect, onDeselect} = this.props;
-    if(multiple) {
-      if(active) {
-        return onDeselect();
+    if (onDeselect) {
+      if (multiple) {
+        if (active) {
+          return onDeselect();
+        }
       }
     }
     onSelect();
@@ -42,10 +46,10 @@ export default class ListItem extends Component {
     return (
       <li className={`${style.ListItem}${classNames}`} onClick={this.onClick.bind(this)}>
         {this.props.children}
-        {activeWithTick &&
+        {activeWithTick && active ?
           <Container centerLeft>
-            <MdCheck className={style.ListItem__Tick}/>
-          </Container>
+            <MdCheck className={style.ListItem__Tick} size={28}/>
+          </Container> : ""
         }
       </li>
     );
