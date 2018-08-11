@@ -29,8 +29,10 @@ export default class Container extends Component {
     topLeft: false,
     topCenter: false,
     //Events
-    onMouseOver: e => {},
-    onMouseLeave: e => {}
+    onMouseOver: e => {
+    },
+    onMouseLeave: e => {
+    }
   };
 
   constructor(props) {
@@ -65,32 +67,32 @@ export default class Container extends Component {
       onMouseLeave
     } = this.props;
     let classNames = classnames({
-      [style["Container--maxWidth"]]:maxWidth,
-      [style["Container--minWidth"]]:minWidth,
-      [style["Container--inline"]]:inline,
-      [style["Container--leftTextAlign"]]:leftTextAlign,
-      [style["Container--centerTextAlign"]]:centerTextAlign,
-      [style["Container--left"]]:left,
-      [style["Container--right"]]:right,
-      [style["Container--relative"]]:relative,
-      [style["Container--absolute"]]:absolute,
-      [style["Container--inSpace"]]:inSpace,
-      [style["Container--outSpace"]]:outSpace,
-      [style["Container--centerLeft"]]:centerLeft,
-      [style["Container--centerRight"]]:centerRight,
-      [style["Container--center"]]:center,
-      [style["Container--bottomRight"]]:bottomRight,
-      [style["Container--bottomLeft"]]:bottomLeft,
-      [style["Container--bottomCenter"]]:bottomCenter,
-      [style["Container--topRight"]]:topRight,
-      [style["Container--topLeft"]]:topLeft,
-      [style["Container--topCenter"]]:topCenter,
-      [style["Container--onMouseOver"]]:onMouseOver,
-      [style["Container--onMouseLeave"]]:onMouseLeave
+      [style["Container--maxWidth"]]: maxWidth,
+      [style["Container--minWidth"]]: minWidth,
+      [style["Container--inline"]]: inline,
+      [style["Container-leftTextAlign"]]: leftTextAlign,
+      [style["Container-centerTextAlign"]]: centerTextAlign,
+      [style["Container--left"]]: left,
+      [style["Container--right"]]: right,
+      [style["Container--relative"]]: relative,
+      [style["Container--absolute"]]: absolute,
+      [style["Container--inSpace"]]: inSpace,
+      [style["Container--outSpace"]]: outSpace,
+      [style["Container--centerLeft"]]: centerLeft,
+      [style["Container--centerRight"]]: centerRight,
+      [style["Container--center"]]: center,
+      [style["Container--bottomRight"]]: bottomRight,
+      [style["Container--bottomLeft"]]: bottomLeft,
+      [style["Container--bottomCenter"]]: bottomCenter,
+      [style["Container--topRight"]]: topRight,
+      [style["Container--topLeft"]]: topLeft,
+      [style["Container--topCenter"]]: topCenter,
+      [style["Container--onMouseOver"]]: onMouseOver,
+      [style["Container--onMouseLeave"]]: onMouseLeave
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <div className={`${style.Container}${classNames} ${className}`}
+      <div className={`${style.Container}${classNames} ${className ? className : ""}`}
            id={id}
            style={{maxWidth: `${maxWidth ? maxWidth : "auto"}`, minWidth: `${minWidth ? minWidth : "auto"}`}}
            onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
