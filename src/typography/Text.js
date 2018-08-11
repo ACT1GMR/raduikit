@@ -1,3 +1,4 @@
+// src/typography/Text
 import React, {Component} from "react";
 import style from "../../styles/modules/typography/Text.scss";
 import classnames from "classnames";
@@ -13,9 +14,7 @@ export default class extends Component {
     xs: false,
     sm: false,
     lg: false,
-    xlg: false,
-    onClose: e => {
-    },
+    xlg: false
   };
 
   constructor(props) {
@@ -36,7 +35,7 @@ export default class extends Component {
     });
     if (classNames) classNames = ` ${classNames}`;
     classNames = `${style.Text}${classNames}`;
-    if(link) {
+    if (link) {
       classNames = `${style["Text--link"]} ${classNames}`;
       return <a href={link} className={classNames}>{children}</a>
     }

@@ -1,3 +1,4 @@
+// src/avatar/index
 import React, {Component} from "react";
 
 import AvatarImage from "./AvatarImage";
@@ -18,7 +19,9 @@ export default class Avatar extends Component {
 
   render() {
     let {left} = this.props;
-    let classNames = classnames({[style["Avatar--left"]]: left});
+    let classNames = classnames({
+      [style["Avatar--left"]]: left
+    });
     if (classNames) classNames = ` ${classNames}`;
     return (
       <div className={`${style.Avatar}${classNames}`}>

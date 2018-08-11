@@ -1,3 +1,4 @@
+// src/modal/ModalBody
 import React, {Component} from "react";
 import style from "../../styles/modules/modal/ModalBody.scss";
 

@@ -1,3 +1,4 @@
+// src/content/index
 import React, {Component} from "react";
 import style from "../../styles/modules/content/index.scss";
 import classnames from "classnames";
@@ -25,7 +26,7 @@ export default class Content extends Component {
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <div className={`${style.Content}${classNames}`} style={{borderRadius: borderRadius}}>
+      <div className={`${style.Content}${classNames}`} style={{borderRadius}}>
         {this.props.children}
       </div>
     );

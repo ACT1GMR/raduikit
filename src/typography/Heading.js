@@ -1,3 +1,4 @@
+// src/typography/Heading
 import React, {Component} from "react";
 import style from "../../styles/modules/typography/Heading.scss";
 import classnames from "classnames";
@@ -6,8 +7,10 @@ export default class extends Component {
 
   static defaultProps = {
     invert: false,
-    className: null,
-    onClose: e => {},
+    h2: false,
+    h3: false,
+    h4: false,
+    h5: false
   };
 
   constructor(props) {
@@ -15,10 +18,10 @@ export default class extends Component {
   }
 
   render() {
-    const {h2, h3, h4, h5, children, invert} = this.props;
+    const {h2, h3, h4, h5, invert, children} = this.props;
     let classNames = classnames({[style["Heading--invert"]]: invert});
     if (classNames) classNames = ` ${classNames}`;
-    classNames =`${style.Heading}${classNames}`;
+    classNames = `${style.Heading}${classNames}`;
     if (h2) {
       return <h2 className={classNames}>{children}</h2>
     }

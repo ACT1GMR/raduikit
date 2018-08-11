@@ -1,6 +1,7 @@
+// src/loading/index
+import React, {Component} from "react";
 import LoadingSpinner from "./LoadingSpinner";
 import LoadingBlinkDots from "./LoadingBlinkDots";
-import React, {Component} from "react";
 import style from "../../styles/modules/loading/index.scss";
 import classnames from "classnames";
 
@@ -20,9 +21,8 @@ export default class Loading extends Component {
       [style["Loading--hasSpace"]]: hasSpace
     });
     if (classNames) classNames = ` ${classNames}`;
-    classNames = `${style.Loading}${classNames}`;
     return (
-      <div className={classNames}>
+      <div className={`${style.Loading}${classNames}`}>
         {this.props.children}
       </div>
     );

@@ -1,3 +1,4 @@
+// src/shape/index
 import React, {Component} from "react";
 import style from "../../styles/modules/shape/index.scss";
 import classnames from "classnames";
@@ -6,11 +7,11 @@ import ShapeCircle from "./ShapeCircle";
 export default class Shape extends Component {
 
   static defaultProps = {
-    small: false,
-    large: false,
-    xLarge: false,
-    colorAccent: false,
-    colorPrimary: false
+    sm: false,
+    lg: false,
+    xlg: false,
+    colorTextAccent: false,
+    colorTextPrimary: false
   };
 
   constructor(props) {
@@ -18,13 +19,13 @@ export default class Shape extends Component {
   }
 
   render() {
-    const {small, large, xLarge, colorAccent, colorPrimary} = this.props;
+    const {sm, lg, xlg, colorTextAccent, colorTextPrimary} = this.props;
     let classNames = classnames({
-      [style["Shape--sm"]]: small,
-      [style["Shape--lg"]]: large,
-      [style["Shape--xlg"]]: xLarge,
-      [style["Shape--colorAccent"]]: colorAccent,
-      [style["Shape--colorPrimary"]]: colorPrimary
+      [style["Shape--sm"]]: sm,
+      [style["Shape--lg"]]: lg,
+      [style["Shape--xlg"]]: xlg,
+      [style["Shape--colorTextAccent"]]: colorTextAccent,
+      [style["Shape--colorTextPrimary"]]: colorTextPrimary
     });
     if (classNames) classNames = ` ${classNames}`;
     return (

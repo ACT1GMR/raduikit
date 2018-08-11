@@ -1,3 +1,4 @@
+// src/message/index
 import React, {Component} from "react";
 import style from "../../styles/modules/message/index.scss";
 import classnames from "classnames";
@@ -5,9 +6,9 @@ import classnames from "classnames";
 export default class Message extends Component {
 
   static defaultProps = {
-    small: false,
-    large: false,
-    xLarge: false,
+    sm: false,
+    lg: false,
+    xlg: false,
     invert: false,
     src: null
   };
@@ -17,11 +18,11 @@ export default class Message extends Component {
   }
 
   render() {
-    const {small, large, xLarge, invert, warn, success, error} = this.props;
+    const {sm, lg, xlg, invert, warn, success, error} = this.props;
     let classNames = classnames({
-      [style["Message--sm"]]: small,
-      [style["Message--lg"]]: large,
-      [style["Message--xlg"]]: xLarge,
+      [style["Message--sm"]]: sm,
+      [style["Message--lg"]]: lg,
+      [style["Message--xlg"]]: xlg,
       [style["Message--invert"]]: invert,
       [style["Message--warn"]]: warn,
       [style["Message--success"]]: success,
@@ -35,5 +36,3 @@ export default class Message extends Component {
     );
   }
 }
-
-export {}

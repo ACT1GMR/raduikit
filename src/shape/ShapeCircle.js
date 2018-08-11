@@ -1,3 +1,4 @@
+// src/shape/ShapeCircle
 import React, {Component} from "react";
 import style from "../../styles/modules/shape/ShapeCircle.scss";
 import classnames from "classnames";

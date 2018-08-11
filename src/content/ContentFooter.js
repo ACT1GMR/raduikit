@@ -1,4 +1,4 @@
-// src/list/List.
+// src/content/ContentFooter
 import React, {Component} from "react";
 import style from "../../styles/modules/content/ContentFooter.scss";
 

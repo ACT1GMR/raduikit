@@ -1,4 +1,4 @@
-// src/list/List.
+// src/list/ListItem
 import React, {Component} from "react";
 import classnames from "classnames";
 import style from "../../styles/modules/list/ListItem.scss";
@@ -13,14 +13,13 @@ export default class ListItem extends Component {
     invert: false,
     active: false,
     activeWithTick: false,
-    onSelect: e => {
-    },
-    onDeSelect: e => {
-    }
+    onSelect: e => {},
+    onDeSelect: e => {}
   };
 
   constructor(props) {
     super(props);
+    this.onClick = this.onClick.bind(this);
   }
 
   onClick() {
@@ -44,7 +43,7 @@ export default class ListItem extends Component {
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <li className={`${style.ListItem}${classNames}`} onClick={this.onClick.bind(this)}>
+      <li className={`${style.ListItem}${classNames}`} onClick={this.onClick}>
         {this.props.children}
         {activeWithTick && active ?
           <Container centerLeft>

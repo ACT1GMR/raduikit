@@ -1,3 +1,4 @@
+// src/modal/ModalFooter
 import React, {Component} from "react";
 import style from "../../styles/modules/modal/ModalFooter.scss";
 

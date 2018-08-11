@@ -1,3 +1,4 @@
+// src/modal/index
 import React, {Component} from "react";
 import ModalBody from "./ModalBody";
 import ModalFooter from "./ModalFooter";
@@ -6,9 +7,14 @@ import style from "../../styles/modules/modal/index.scss";
 
 export default class extends Component {
 
+  static defaultProps = {
+    isOpen: false
+  };
+
   constructor(props) {
     super(props);
     this.container = React.createRef();
+    this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
   handleClickOutside(event) {
@@ -24,7 +30,7 @@ export default class extends Component {
     const {isOpen} = this.props;
     return isOpen ?
       <div className={style.Modal} ref={this.container}>
-        <div className={style.Modal__Overlay} onClick={this.handleClickOutside.bind(this)}/>
+        <div className={style.Modal__Overlay} onClick={this.handleClickOutside}/>
         <div className={style.Modal__Content}>
           {this.props.children}
         </div>

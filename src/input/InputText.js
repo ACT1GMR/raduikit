@@ -1,4 +1,4 @@
-// src/list/List.
+// src/input/InputText
 import React, {Component} from "react";
 import classnames from "classnames";
 import style from "../../styles/modules/input/InputText.scss";
@@ -6,9 +6,10 @@ import style from "../../styles/modules/input/InputText.scss";
 export default class InputText extends Component {
 
   static defaultProps = {
-    selection: false,
-    active: false,
-    onClick: null
+    value: null,
+    onChange: e => {
+    },
+    placeholder: null
   };
 
   constructor(props) {
@@ -18,13 +19,13 @@ export default class InputText extends Component {
     };
   }
 
-  onFocus(){
+  onFocus() {
     this.setState({
       focus: true
     })
   }
 
-  onBlur(){
+  onBlur() {
     this.setState({
       focus: false
     })
@@ -37,7 +38,12 @@ export default class InputText extends Component {
     if (classNames) classNames = ` ${classNames}`;
     return (
       <div className={`${style.InputText}${classNames}`}>
-        <input className={style.InputText__Input} onChange={onChange} onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)} value={value} placeholder={placeholder}/>
+        <input className={style.InputText__Input}
+               onChange={onChange}
+               onFocus={this.onFocus.bind(this)}
+               onBlur={this.onBlur.bind(this)}
+               value={value}
+               placeholder={placeholder}/>
       </div>
     );
   }

@@ -1,4 +1,4 @@
-// src/list/List.
+// src/loading/LoadingSpinner
 import React, {Component} from "react";
 import style from "../../styles/modules/loading/LoadingSpinner.scss";
 

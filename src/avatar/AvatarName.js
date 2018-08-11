@@ -1,4 +1,4 @@
-// src/list/List.
+// src/avatar/AvatarName
 import React, {Component} from "react";
 import classnames from "classnames";
 import style from "../../styles/modules/avatar/AvatarName.scss";
@@ -6,10 +6,11 @@ import style from "../../styles/modules/avatar/AvatarName.scss";
 export default class AvatarName extends Component {
 
   static defaultProps = {
-    textInvert: false,
+    invert: false,
     bottom: false,
-    small: false,
-    large: false
+    sm: false,
+    lg: false,
+    xlg: false
   };
 
   constructor(props) {
@@ -17,12 +18,13 @@ export default class AvatarName extends Component {
   }
 
   render() {
-    const {textInvert, bottom, small, large, xLarge} = this.props;
+    const {invert, bottom, sm, lg, xlg} = this.props;
     let classNames = classnames({
-      [style["AvatarName--invert"]]: textInvert,
+      [style["AvatarName--invert"]]: invert,
       [style["AvatarName--bottom"]]: bottom,
-      [style["AvatarName--sm"]]: small,
-      [style["AvatarName--lg"]]: large
+      [style["AvatarName--sm"]]: sm,
+      [style["AvatarName--lg"]]: lg,
+      [style["AvatarName--lg"]]: xlg
     });
     if (classNames) classNames = ` ${classNames}`;
     return (

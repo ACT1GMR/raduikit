@@ -1,16 +1,19 @@
+// src/loading/Dropdown
 import React, {Component} from "react";
 import style from "../../styles/modules/menu/Dropdown.scss";
-import {MdClose} from "react-icons/lib/md";
 import classnames from "classnames";
 import List from "../list/index";
 
-export default class extends Component {
+export default class Dropdown extends Component {
+
+  static defaultProps = {
+    isOpen: false,
+    onClose: e => {
+    }
+  };
 
   constructor(props) {
     super(props);
-    this.state = {
-      isOpen: false
-    };
     this.container = React.createRef();
   }
 
@@ -21,7 +24,7 @@ export default class extends Component {
   handleClickOutside(event) {
     const current = this.container.current;
     const {isOpen, onClose} = this.props;
-    if(onClose){
+    if (onClose) {
       if (current && !current.contains(event.target)) {
         if (isOpen) {
           onClose();
@@ -30,11 +33,8 @@ export default class extends Component {
     }
   }
 
-
   render() {
     const {isOpen} = this.props;
-    let classNames = classnames({[style["Dropdown--Open"]]: isOpen});
-    if (classNames) classNames = ` ${classNames}`;
     return isOpen ?
       <div className={style.Dropdown} ref={this.container}>
         <List>

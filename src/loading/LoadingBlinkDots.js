@@ -1,4 +1,4 @@
-// src/list/List.
+// src/loading/LoadingBlinkDots
 import React, {Component} from "react";
 import style from "../../styles/modules/loading/LoadingBlinkDots.scss";
 import classnames from "classnames";
@@ -7,9 +7,9 @@ export default class LoadingBlinkDots extends Component {
 
   static defaultProps = {
     invert: false,
-    large: false,
-    xLarge: false,
-    small: false,
+    lg: false,
+    xlg: false,
+    sm: false,
     src: null
   };
 
@@ -18,12 +18,12 @@ export default class LoadingBlinkDots extends Component {
   }
 
   render() {
-    let {invert, large, xLarge, small} = this.props;
+    let {invert, lg, xlg, sm} = this.props;
     let classNames = classnames({
       [style["LoadingBlinkDots--invert"]]: invert,
-      [style["LoadingBlinkDots--lg"]]: large,
-      [style["LoadingBlinkDots--xlg"]]: xLarge,
-      [style["LoadingBlinkDots--sm"]]: small
+      [style["LoadingBlinkDots--lg"]]: lg,
+      [style["LoadingBlinkDots--xlg"]]: xlg,
+      [style["LoadingBlinkDots--sm"]]: sm
     });
     if (classNames) classNames = ` ${classNames}`;
     return (

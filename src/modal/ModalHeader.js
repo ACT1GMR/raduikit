@@ -1,3 +1,4 @@
+// src/modal/ModalHeader
 import React, {Component} from "react";
 import style from "../../styles/modules/modal/ModalHeader.scss";
 

@@ -1,4 +1,4 @@
-// src/list/List.
+// src/avatar/AvatarText
 import React, {Component} from "react";
 import style from "../../styles/modules/avatar/AvatarText.scss";
 
