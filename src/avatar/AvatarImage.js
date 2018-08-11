@@ -26,7 +26,7 @@ export default class AvatarImage extends Component {
     if (classNames) classNames = ` ${classNames}`;
     return (
       <div className={`${style.AvatarImage}${classNames}`}>
-        <img src={src} className={style.AvatarImage__image}/>
+        <img src={src} className={style.AvatarImage__Image}/>
       </div>
     );
   }
