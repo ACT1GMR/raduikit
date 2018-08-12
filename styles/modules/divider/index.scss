@@ -1,0 +1,17 @@
+.Divider {
+  display: block;
+  width: 100%;
+}
+
+.Divider--colorAccent {
+  background-color: $color-accent;
+
+}
+
+.Divider--colorPrimary {
+  background-color: $color-primary;
+}
+
+.Divider--colorGray {
+  background-color: $color-gray;
+}
