@@ -4,6 +4,10 @@
   color: $color-text;
 }
 
+.Text--invert {
+  color: $color-text-invert;
+}
+
 .Text--inline {
   display: inline;
 }
@@ -14,18 +18,22 @@
 }
 
 .Text--xs {
-  font-size: $font-size-tiny;
+  font-size: $font-size-xsm;
 }
 
 .Text--sm {
-  font-size: $font-size-small;
+  font-size: $font-size-sm;
 }
 
 .Text--lg {
-  font-size: $font-size-large;
+  font-size: $font-size-lg;
 }
 
 .Text--xlg {
+  font-size: $font-size-xlg;
+}
+
+.Text--jumbo {
   font-size: $font-size-jumbo;
 }
 

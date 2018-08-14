@@ -1,25 +1,33 @@
 // src/gap/index
-import React, {Component} from "react";
+import React, {PureComponent} from "react";
 import style from "../../styles/modules/gap/index.scss";
 import classnames from "classnames";
+import PropTypes from 'prop-types';
 
-export default class Gap extends Component {
+export default class Gap extends PureComponent {
+
+  static propTypes = {
+    x: PropTypes.number,
+    y: PropTypes.number,
+    block: PropTypes.bool,
+    unit: PropTypes.string,
+  };
 
   static defaultProps = {
-    x: false,
-    y: false,
+    x: 0,
+    y: 0,
     block: false,
-    unit: false
+    unit: "px"
   };
 
   constructor(props) {
     super(props);
-  }
+  };
 
   render() {
     const {x, y, unit, block} = this.props;
     let inlineStyle = {};
-    inlineStyle.padding = `${y || 0}${y ? unit || "px" : ""} ${x || 0}${x ? unit || "px": ""}`;
+    inlineStyle.padding = `${y}${unit} ${x}${unit}`;
     let classNames = classnames({
       [style["Gap--block"]]: block,
     });

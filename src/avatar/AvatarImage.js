@@ -1,31 +1,35 @@
 // src/avatar/AvatarImage
-import React, {Component} from "react";
-import style from "../../styles/modules/avatar/AvatarImage.scss";
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import classnames from "classnames";
+import style from "../../styles/modules/avatar/AvatarImage.scss";
 
-export default class AvatarImage extends Component {
+export default class AvatarImage extends PureComponent {
+
+  static propTypes = {
+    src: PropTypes.string.isRequired,
+    size: PropTypes.oneOf(['sm', 'lg', 'xlg'])
+  };
 
   static defaultProps = {
-    sm: false,
-    lg: false,
-    xlg: false,
-    src: null
+    src: undefined,
+    size: null
   };
 
   constructor(props) {
     super(props);
-  }
+  };
 
   render() {
-    let {src, sm, lg, xlg} = this.props;
+    let { src, size } = this.props;
     let classNames = classnames({
-      [style["AvatarImage--sm"]]: sm,
-      [style["AvatarImage--lg"]]: lg,
-      [style["AvatarImage--xlg"]]: xlg
+      [style["AvatarImage--sm"]]:  (size === "sm"),
+      [style["AvatarImage--lg"]]:  (size === "lg"),
+      [style["AvatarImage--xlg"]]: (size === "xlg"),
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <div className={`${style.AvatarImage}${classNames}`}>
+      <div className={`${style.AvatarImage} ${classNames}`}>
         <img src={src} className={style.AvatarImage__Image}/>
       </div>
     );

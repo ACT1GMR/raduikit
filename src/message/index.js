@@ -2,13 +2,12 @@
 import React, {Component} from "react";
 import style from "../../styles/modules/message/index.scss";
 import classnames from "classnames";
+import PropTypes from "prop-types";
 
 export default class Message extends Component {
 
   static defaultProps = {
-    sm: false,
-    lg: false,
-    xlg: false,
+    size: PropTypes.oneOf(["sm", "lg", "xlg"]),
     invert: false,
     src: null
   };
@@ -18,11 +17,12 @@ export default class Message extends Component {
   }
 
   render() {
-    const {sm, lg, xlg, invert, warn, success, error} = this.props;
+    const {size, invert, warn, success, error} = this.props;
     let classNames = classnames({
-      [style["Message--sm"]]: sm,
-      [style["Message--lg"]]: lg,
-      [style["Message--xlg"]]: xlg,
+      [style["Message--xlg"]]: (size === "xlg"),
+      [style["Message--lg"]]: (size === "lg"),
+      [style["Message--sm"]]: (size === "sm"),
+      [style["Message--xsm"]]: (size === "xsm"),
       [style["Message--invert"]]: invert,
       [style["Message--warn"]]: warn,
       [style["Message--success"]]: success,

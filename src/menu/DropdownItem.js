@@ -7,8 +7,7 @@ export default class DropdownItem extends Component {
 
   static defaultProps = {
     invert: false,
-    onSelect: e => {
-    }
+    onSelect: e => {}
   };
 
   constructor(props) {

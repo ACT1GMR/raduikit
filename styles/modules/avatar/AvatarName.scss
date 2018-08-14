@@ -11,11 +11,15 @@
 }
 
 .AvatarName--sm {
-  font-size: $font-size-tiny;
+  font-size: $font-size-sm;
 }
 
 .AvatarName--lg {
-  font-size: $font-size-large;
+  font-size: $font-size-lg;
+}
+
+.AvatarName--xlg {
+  font-size: $font-size-xlg;
 }
 
 .AvatarName--bottom {

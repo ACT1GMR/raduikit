@@ -1,13 +1,18 @@
-// src/avatar/index
-import React, {Component} from "react";
-
-import AvatarImage from "./AvatarImage";
-import AvatarName from "./AvatarName";
-import AvatarText from "./AvatarText";
+// src/avatar/Avatar
+import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
 import style from "../../styles/modules/avatar/index.scss";
 import classnames from "classnames";
 
-export default class Avatar extends Component {
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export default class Avatar extends PureComponent {
+
+  static propTypes = {
+    left: PropTypes.bool
+  };
 
   static defaultProps = {
     left: false
@@ -18,17 +23,19 @@ export default class Avatar extends Component {
   }
 
   render() {
-    let {left} = this.props;
+    let {left, children} = this.props;
     let classNames = classnames({
       [style["Avatar--left"]]: left
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <div className={`${style.Avatar}${classNames}`}>
-        {this.props.children}
+      <div className={`${style.Avatar} ${classNames}`}>
+        {children}
       </div>
-    );
+    )
   }
 }
 
-export {AvatarText, AvatarName, AvatarImage}
+export {default as AvatarImage} from "./AvatarImage";
+export {default as AvatarName} from "./AvatarName";
+

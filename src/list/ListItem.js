@@ -1,11 +1,22 @@
 // src/list/ListItem
 import React, {Component} from "react";
+import PropTypes from "prop-types";
 import classnames from "classnames";
 import style from "../../styles/modules/list/ListItem.scss";
 import {MdCheck} from "react-icons/lib/md";
 import Container from "../container";
 
-export default class ListItem extends Component {
+class ListItem extends Component {
+
+  static propTypes = {
+    selection: PropTypes.bool,
+    multiple: PropTypes.bool,
+    invert: PropTypes.bool,
+    active: PropTypes.bool,
+    activeWithTick: PropTypes.bool,
+    onSelect: PropTypes.func,
+    onDeSelect: PropTypes.func,
+  };
 
   static defaultProps = {
     selection: false,
@@ -13,8 +24,10 @@ export default class ListItem extends Component {
     invert: false,
     active: false,
     activeWithTick: false,
-    onSelect: e => {},
-    onDeSelect: e => {}
+    onSelect: e => {
+    },
+    onDeSelect: e => {
+    },
   };
 
   constructor(props) {
@@ -35,16 +48,15 @@ export default class ListItem extends Component {
   }
 
   render() {
-    const {selection, active, activeWithTick, invert} = this.props;
+    const {selection, active, activeWithTick, invert, value, children} = this.props;
     let classNames = classnames({
       [style["ListItem--selection"]]: selection,
       [style["ListItem--active"]]: active,
-      [style["ListItem--invert"]]: invert
+      [style["ListItem--invert"]]: invert,
     });
-    if (classNames) classNames = ` ${classNames}`;
     return (
-      <li className={`${style.ListItem}${classNames}`} onClick={this.onClick}>
-        {this.props.children}
+      <li className={`${style.ListItem} ${classNames && classNames}`} onClick={this.onClick}>
+        {children}
         {activeWithTick && active ?
           <Container centerLeft>
             <MdCheck className={style.ListItem__Tick} size={28}/>
@@ -54,3 +66,5 @@ export default class ListItem extends Component {
     );
   }
 }
+
+export default ListItem;

@@ -1,13 +1,41 @@
-import React, {Component} from "react";
+import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
 import style from "../../styles/modules/container/index.scss"
 import classnames from "classnames";
 
-export default class Container extends Component {
+export default class Container extends PureComponent {
+
+  static propTypes = {
+    id: PropTypes.string,
+    maxWidth: PropTypes.string,
+    minWidth: PropTypes.string,
+    inline: PropTypes.bool,
+    leftTextAlign: PropTypes.bool,
+    centerTextAlign: PropTypes.bool,
+    left: PropTypes.bool,
+    right: PropTypes.bool,
+    relative: PropTypes.bool,
+    absolute: PropTypes.bool,
+    inSpace: PropTypes.bool,
+    outSpace: PropTypes.bool,
+    className: PropTypes.string,
+    centerLeft: PropTypes.bool,
+    centerRight: PropTypes.bool,
+    center: PropTypes.bool,
+    bottomRight: PropTypes.bool,
+    bottomLeft: PropTypes.bool,
+    bottomCenter: PropTypes.bool,
+    topRight: PropTypes.bool,
+    topLeft: PropTypes.bool,
+    topCenter: PropTypes.bool,
+    onMouseOver: PropTypes.func,
+    onMouseLeave: PropTypes.func,
+  };
 
   static defaultProps = {
-    id: false,
-    maxWidth: false,
-    minWidth: 0,
+    id: "",
+    maxWidth: null,
+    minWidth: null,
     inline: false,
     leftTextAlign: false,
     centerTextAlign: false,
@@ -15,8 +43,8 @@ export default class Container extends Component {
     right: false,
     relative: false,
     absolute: false,
-    inSpace: 0,
-    outSpace: 0,
+    inSpace: false,
+    outSpace: false,
     className: null,
     //Positions
     centerLeft: false,
@@ -70,8 +98,8 @@ export default class Container extends Component {
       [style["Container--maxWidth"]]: maxWidth,
       [style["Container--minWidth"]]: minWidth,
       [style["Container--inline"]]: inline,
-      [style["Container-leftTextAlign"]]: leftTextAlign,
-      [style["Container-centerTextAlign"]]: centerTextAlign,
+      [style["Container--leftTextAlign"]]: leftTextAlign,
+      [style["Container--centerTextAlign"]]: centerTextAlign,
       [style["Container--left"]]: left,
       [style["Container--right"]]: right,
       [style["Container--relative"]]: relative,
@@ -86,15 +114,13 @@ export default class Container extends Component {
       [style["Container--bottomCenter"]]: bottomCenter,
       [style["Container--topRight"]]: topRight,
       [style["Container--topLeft"]]: topLeft,
-      [style["Container--topCenter"]]: topCenter,
-      [style["Container--onMouseOver"]]: onMouseOver,
-      [style["Container--onMouseLeave"]]: onMouseLeave
+      [style["Container--topCenter"]]: topCenter
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <div className={`${style.Container}${classNames} ${className ? className : ""}`}
+      <div className={`${style.Container}${classNames ? classNames : ""} ${className ? className : ""}`}
            id={id}
-           style={{maxWidth: `${maxWidth ? maxWidth : "auto"}`, minWidth: `${minWidth ? minWidth : "auto"}`}}
+           style={{maxWidth, minWidth}}
            onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
         {this.props.children}
       </div>

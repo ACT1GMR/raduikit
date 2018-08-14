@@ -1,6 +1,5 @@
 // src/list/index
 import React, {Component} from "react";
-import ListItem from "./ListItem";
 import style from "../../styles/modules/list/index.scss";
 
 export default class List extends Component {
@@ -18,4 +17,4 @@ export default class List extends Component {
   }
 }
 
-export {ListItem};
+export { default as ListItem } from "./ListItem";

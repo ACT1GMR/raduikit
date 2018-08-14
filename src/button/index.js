@@ -1,20 +1,30 @@
-import React, {Component} from "react";
+import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
 import style from "../../styles/modules/button/index.scss";
 import classnames from "classnames";
 import Loading, {LoadingBlinkDots} from "../loading";
 import Container from "../container";
 
-export default class Button extends Component {
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export default class Button extends PureComponent {
+
+  static propTypes = {
+    text: PropTypes.bool,
+    disabled: PropTypes.bool,
+    outlined: PropTypes.bool,
+    size: PropTypes.oneOf(["xsm", "sm", "lg", "xlg"]),
+    color: PropTypes.oneOf(["accent", "primary", "gray", "white", "green", "red", "yellow"])
+  };
 
   static defaultProps = {
     text: false,
     disabled: false,
     outlined: false,
-    jumbo: false,
-    xlg: false,
-    lg: false,
-    sm: false,
-    xsm: false,
+    size: null,
+    color: "accent"
   };
 
   constructor(props) {
@@ -22,34 +32,32 @@ export default class Button extends Component {
   }
 
   render() {
-    let {onClick, text, disabled, outlined, loading, jumbo, xlg, lg, sm, xsm} = this.props;
+    let {onClick, text, disabled, outlined, loading, size, color} = this.props;
     let classNames = classnames({
       [style["Button--text"]]: text,
       [style["Button--disabled"]]: disabled,
       [style["Button--outlined"]]: outlined,
-      [style["Button--jumbo"]]: jumbo,
-      [style["Button--xlg"]]: xlg,
-      [style["Button--lg"]]: lg,
-      [style["Button--sm"]]: sm,
-      [style["Button--xsm"]]: xsm
-
+      [style["Button--xlg"]]: (size === "xlg"),
+      [style["Button--lg"]]: (size === "lg"),
+      [style["Button--sm"]]: (size === "sm"),
+      [style["Button--xsm"]]: (size === "xsm"),
     });
-    if (classNames) classNames = ` ${classNames}`;
-
+    let colorStyle = `Button--color${capitalizeFirstLetter(color)}`;
     if (loading) {
       return (
-        <button className={`${style.Button}${classNames}`} onClick={loading || disabled ? null : onClick}>
+        <button className={`${style.Button} ${classNames} ${colorStyle}`}
+                onClick={loading || disabled ? null : onClick}>
           <Container centerTextAlign>
-            <Loading><LoadingBlinkDots small invert/></Loading>
+            <Loading><LoadingBlinkDots size="sm" invert/></Loading>
           </Container>
         </button>
-      )
+      );
     }
     return (
-      <button className={`${style.Button}${classNames}`} onClick={loading || disabled ? null : onClick}>
+      <button className={`${style.Button} ${classNames && classNames} ${colorStyle}`}
+              onClick={loading || disabled ? null : onClick}>
         {loading ? "" : this.props.children}
       </button>
-    )
+    );
   }
 }
-

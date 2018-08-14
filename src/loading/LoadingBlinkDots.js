@@ -2,15 +2,18 @@
 import React, {Component} from "react";
 import style from "../../styles/modules/loading/LoadingBlinkDots.scss";
 import classnames from "classnames";
+import PropTypes from "prop-types";
 
 export default class LoadingBlinkDots extends Component {
 
   static defaultProps = {
     invert: false,
-    lg: false,
-    xlg: false,
-    sm: false,
-    src: null
+    size: null
+  };
+
+  static propTypes = {
+    invert: PropTypes.bool,
+    size: PropTypes.oneOf(["sm", "lg", "xlg"]),
   };
 
   constructor(props) {
@@ -18,12 +21,12 @@ export default class LoadingBlinkDots extends Component {
   }
 
   render() {
-    let {invert, lg, xlg, sm} = this.props;
+    let {invert, size} = this.props;
     let classNames = classnames({
       [style["LoadingBlinkDots--invert"]]: invert,
-      [style["LoadingBlinkDots--lg"]]: lg,
-      [style["LoadingBlinkDots--xlg"]]: xlg,
-      [style["LoadingBlinkDots--sm"]]: sm
+      [style["LoadingBlinkDots--lg"]]: (size === "xlg"),
+      [style["LoadingBlinkDots--xlg"]]: (size === "lg"),
+      [style["LoadingBlinkDots--sm"]]: (size === "sm")
     });
     if (classNames) classNames = ` ${classNames}`;
     return (

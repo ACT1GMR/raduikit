@@ -2,7 +2,6 @@
 import React, {Component} from "react";
 import style from "../../styles/modules/shape/index.scss";
 import classnames from "classnames";
-import ShapeCircle from "./ShapeCircle";
 
 export default class Shape extends Component {
 
@@ -36,4 +35,4 @@ export default class Shape extends Component {
   }
 }
 
-export {ShapeCircle}
+export {default as ShapeCircle} from "./ShapeCircle";
