@@ -9,8 +9,8 @@ export default class Shape extends Component {
     sm: false,
     lg: false,
     xlg: false,
-    colorTextAccent: false,
-    colorTextPrimary: false
+    colorAccent: false,
+    colorPrimary: false
   };
 
   constructor(props) {
@@ -18,13 +18,13 @@ export default class Shape extends Component {
   }
 
   render() {
-    const {sm, lg, xlg, colorTextAccent, colorTextPrimary} = this.props;
+    const {sm, lg, xlg, colorAccent, colorPrimary} = this.props;
     let classNames = classnames({
       [style["Shape--sm"]]: sm,
       [style["Shape--lg"]]: lg,
       [style["Shape--xlg"]]: xlg,
-      [style["Shape--colorTextAccent"]]: colorTextAccent,
-      [style["Shape--colorTextPrimary"]]: colorTextPrimary
+      [style["Shape--colorAccent"]]: colorAccent,
+      [style["Shape--colorPrimary"]]: colorPrimary
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
