@@ -1,5 +1,5 @@
 // src/avatar/AvatarName
-import React, { PureComponent } from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import style from "../../styles/modules/avatar/AvatarName.scss";
@@ -10,10 +10,12 @@ export default class AvatarName extends PureComponent {
     invert: PropTypes.bool,
     bottom: PropTypes.bool,
     size: PropTypes.oneOf(["sm", "lg", "xlg"]),
+    fontWeight: PropTypes.oneOf(["normal", "bold"])
   };
 
   static defaultProps = {
     invert: false,
+    fontWeight: "bold",
     bottom: false,
     size: null
   };
@@ -23,17 +25,18 @@ export default class AvatarName extends PureComponent {
   };
 
   render() {
-    let { size, invert, bottom, children } = this.props;
+    let {size, invert, bottom, children, fontWeight} = this.props;
     let classNames = classnames({
       [style["AvatarName--invert"]]: invert,
       [style["AvatarName--bottom"]]: bottom,
-      [style["AvatarName--sm"]]:  (size === "sm"),
-      [style["AvatarName--lg"]]:  (size === "lg"),
+      [style["AvatarName--sm"]]: (size === "sm"),
+      [style["AvatarName--lg"]]: (size === "lg"),
       [style["AvatarName--xlg"]]: (size === "xlg"),
+      [style["AvatarName--fontWeightNormal"]]: (fontWeight === "normal")
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <p className={`${style.AvatarName} ${classNames}`}>{children}</p>
+      <div className={`${style.AvatarName} ${classNames}`}>{children}</div>
     );
   }
 }

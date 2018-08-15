@@ -2,10 +2,35 @@
   font-size: $font-size-base;
   line-height: 2;
   color: $color-text;
+  font-weight: normal;
 }
 
 .Text--invert {
-  color: $color-text-invert;
+  color: $color-text-invert !important;
+}
+
+.Text--colorGray {
+  color: $color-gray !important;
+}
+
+.Text--colorGrayLight {
+  color: $color-gray-light !important;
+}
+
+.Text--colorGrayDark {
+  color: $color-gray-dark !important;
+}
+
+.Text--colorAccent {
+  color: $color-accent !important;
+}
+
+.Text--colorAccentLight {
+  color: $color-accent-light !important;
+}
+
+.Text--colorAccentDark {
+  color: $color-accent-dark !important;
 }
 
 .Text--inline {

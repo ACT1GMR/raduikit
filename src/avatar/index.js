@@ -38,4 +38,5 @@ export default class Avatar extends PureComponent {
 
 export {default as AvatarImage} from "./AvatarImage";
 export {default as AvatarName} from "./AvatarName";
+export {default as AvatarText} from "./AvatarText";
 

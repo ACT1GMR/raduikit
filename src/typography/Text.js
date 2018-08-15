@@ -4,6 +4,10 @@ import style from "../../styles/modules/typography/Text.scss";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 export default class extends Component {
 
   static propTypes = {
@@ -13,6 +17,9 @@ export default class extends Component {
     italic: PropTypes.bool,
     bold: PropTypes.bool,
     size: PropTypes.oneOf(["xs", "sm", "lg", "xlg"]),
+    color: PropTypes.oneOf(["gray", "accent"]),
+    dark: PropTypes.bool,
+    light: PropTypes.bool
   };
 
   static defaultProps = {
@@ -21,6 +28,9 @@ export default class extends Component {
     inline: false,
     italic: false,
     bold: false,
+    color: null,
+    dark: false,
+    light: false,
     size: null
   };
 
@@ -29,7 +39,7 @@ export default class extends Component {
   }
 
   render() {
-    const {invert, inline, italic, bold, size, children, link} = this.props;
+    const {invert, inline, italic, bold, size, children, link, color, dark, light} = this.props;
     let classNames = classnames({
       [style["Text--invert"]]: invert,
       [style["Text--inline"]]: inline,
@@ -41,7 +51,15 @@ export default class extends Component {
       [style["Text--xlg"]]: (size === "xlg"),
     });
     if (classNames) classNames = ` ${classNames}`;
-    classNames = `${style.Text}${classNames}`;
+
+    let colorClassNames = "";
+    if (color) {
+      colorClassNames = ` Text--color${capitalizeFirstLetter(color)}`;
+      if (dark || light) {
+        colorClassNames += light ? "Light" : "Dark";
+      }
+    }
+    classNames = `${style.Text}${classNames}${colorClassNames}`;
     if (link) {
       classNames = `${style["Text--link"]} ${classNames}`;
       return <a href={link} className={classNames}>{children}</a>
