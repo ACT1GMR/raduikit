@@ -1,28 +1,29 @@
 .Shape {
-  width: 24px;
-  height: 24px;
+  width: $icon-size-md;
+  height: $icon-size-md;
   border-radius: 50%;
   display: inline-block;
   text-align: center;
-  line-height: 24px;
+  line-height: $icon-size-md;
 }
 
 .Shape--sm {
-  width: 16px;
-  height: 16px;
-  line-height: 16px;
+  width: $icon-size-sm;
+  height: $icon-size-sm;
+  line-height: $icon-size-sm;
+  font-size: $font-size-sm;
 }
 
 .Shape--lg {
-  width: 32px;
-  height: 32px;
+  width: $icon-size-lg;
+  height: $icon-size-lg;
   line-height: 32px;
 }
 
 .Shape--xlg {
-  width: 64px;
-  height: 64px;
-  line-height: 64px;
+  width: $icon-size-lg;
+  height: $icon-size-lg;
+  line-height: $icon-size-lg;
 }
 
 .Shape--colorPrimary {
