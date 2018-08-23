@@ -54,11 +54,11 @@ export default class extends Component {
 
     let colorClassNames = "";
     if (color) {
-      colorClassNames = ` Text--color${capitalizeFirstLetter(color)}`;
+      colorClassNames = `Text--color${capitalizeFirstLetter(color)}`;
       if (dark || light) {
         colorClassNames += light ? "Light" : "Dark";
       }
-      colorClassNames = style[colorClassNames];
+      colorClassNames = ` ${style[colorClassNames]}`;
     }
     classNames = `${style.Text}${classNames}${colorClassNames}`;
     if (link) {
