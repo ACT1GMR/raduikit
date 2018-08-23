@@ -58,6 +58,7 @@ export default class extends Component {
       if (dark || light) {
         colorClassNames += light ? "Light" : "Dark";
       }
+      colorClassNames = style[colorClassNames];
     }
     classNames = `${style.Text}${classNames}${colorClassNames}`;
     if (link) {
