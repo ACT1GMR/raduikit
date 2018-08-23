@@ -6,11 +6,8 @@ import classnames from "classnames";
 export default class Shape extends Component {
 
   static defaultProps = {
-    sm: false,
-    lg: false,
-    xlg: false,
-    colorAccent: false,
-    colorPrimary: false
+    size: null,
+    color: null
   };
 
   constructor(props) {
@@ -18,17 +15,18 @@ export default class Shape extends Component {
   }
 
   render() {
-    const {sm, lg, xlg, colorAccent, colorPrimary} = this.props;
+    const {color, size, ...other} = this.props;
     let classNames = classnames({
-      [style["Shape--sm"]]: sm,
-      [style["Shape--lg"]]: lg,
-      [style["Shape--xlg"]]: xlg,
-      [style["Shape--colorAccent"]]: colorAccent,
-      [style["Shape--colorPrimary"]]: colorPrimary
+      [style["Shape--colorAccent"]]: color === "accent",
+      [style["Shape--colorPrimary"]]: color === "primary",
+      [style["Shape--colorGray"]]: color === "gray",
+      [style["Shape--sm"]]: size === "sm",
+      [style["Shape--lg"]]: size === "lg",
+      [style["Shape--xlg"]]: size === "xlg"
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <div className={`${style.Shape}${classNames}`}>
+      <div className={`${style.Shape}${classNames}`} {...other}>
         {this.props.children}
       </div>
     );

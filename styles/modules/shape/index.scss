@@ -17,13 +17,13 @@
 .Shape--lg {
   width: $icon-size-lg;
   height: $icon-size-lg;
-  line-height: 32px;
+  line-height: $icon-size-lg;
 }
 
 .Shape--xlg {
-  width: $icon-size-lg;
-  height: $icon-size-lg;
-  line-height: $icon-size-lg;
+  width: $icon-size-xlg;
+  height: $icon-size-xlg;
+  line-height: $icon-size-xlg;
 }
 
 .Shape--colorPrimary {
