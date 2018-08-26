@@ -1,6 +1,6 @@
 {
   "name": "raduikit",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "UI kit is an progressive ui components built in react and help you to build your web app",
   "main": "src",
   "scripts": {
