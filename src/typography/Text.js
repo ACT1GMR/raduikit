@@ -63,7 +63,7 @@ export default class extends Component {
     classNames = `${style.Text}${classNames}${colorClassNames}`;
     if (link) {
       classNames = `${style["Text--link"]} ${classNames}`;
-      return <a href={link} className={classNames}>{children}</a>
+      return <a href={link} className={classNames} target="_blank">{children}</a>
     }
     return <p className={classNames}>{children}</p>
   }
