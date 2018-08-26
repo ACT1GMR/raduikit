@@ -44,7 +44,9 @@ class ListItem extends Component {
         }
       }
     }
-    onSelect();
+    if (onSelect) {
+      onSelect();
+    }
   }
 
   render() {

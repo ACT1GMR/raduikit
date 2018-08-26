@@ -12,7 +12,7 @@ export default class extends Component {
 
   static propTypes = {
     invert: PropTypes.bool,
-    link: PropTypes.bool,
+    link: PropTypes.string,
     inline: PropTypes.bool,
     italic: PropTypes.bool,
     bold: PropTypes.bool,
@@ -24,13 +24,13 @@ export default class extends Component {
 
   static defaultProps = {
     invert: false,
-    link: false,
     inline: false,
     italic: false,
     bold: false,
-    color: null,
     dark: false,
     light: false,
+    link: null,
+    color: null,
     size: null
   };
 

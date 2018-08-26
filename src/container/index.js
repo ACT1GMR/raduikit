@@ -55,12 +55,7 @@ export default class Container extends PureComponent {
     bottomCenter: false,
     topRight: false,
     topLeft: false,
-    topCenter: false,
-    //Events
-    onMouseOver: e => {
-    },
-    onMouseLeave: e => {
-    }
+    topCenter: false
   };
 
   constructor(props) {
@@ -91,8 +86,7 @@ export default class Container extends PureComponent {
       topRight,
       topLeft,
       topCenter,
-      onMouseOver,
-      onMouseLeave
+      ...other
     } = this.props;
     let classNames = classnames({
       [style["Container--maxWidth"]]: maxWidth,
@@ -118,10 +112,7 @@ export default class Container extends PureComponent {
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <div className={`${style.Container}${classNames ? classNames : ""} ${className ? className : ""}`}
-           id={id}
-           style={{maxWidth, minWidth}}
-           onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
+      <div className={`${style.Container}${classNames ? classNames : ""}${className ? ` ${className}` : ""}`} style={{maxWidth, minWidth}} {...other}>
         {this.props.children}
       </div>
     );
