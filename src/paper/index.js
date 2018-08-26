@@ -1,5 +1,5 @@
 // src/content/index
-import React, { PureComponent } from "react";
+import React, {PureComponent} from "react";
 import style from "../../styles/modules/paper/index.scss";
 import classnames from "classnames";
 import PropTypes from "prop-types";
@@ -7,7 +7,10 @@ import PropTypes from "prop-types";
 export default class Paper extends PureComponent {
 
   static propTypes = {
-    borderRadius: PropTypes.number,
+    borderRadius: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]),
     colorBackgroundDark: PropTypes.bool,
     colorBackgroundLight: PropTypes.bool,
     colorBackground: PropTypes.bool,
@@ -25,7 +28,7 @@ export default class Paper extends PureComponent {
   };
 
   render() {
-    let { borderRadius, colorBackgroundLight, colorBackgroundDark, colorBackground } = this.props;
+    let {borderRadius, colorBackgroundLight, colorBackgroundDark, colorBackground} = this.props;
     let classNames = classnames({
       [style["Paper--colorBackgroundLight"]]: colorBackgroundLight,
       [style["Paper--colorBackgroundDark"]]: colorBackgroundDark,
