@@ -16,6 +16,7 @@ export default class extends Component {
     inline: PropTypes.bool,
     italic: PropTypes.bool,
     bold: PropTypes.bool,
+    wordWrap: PropTypes.oneOf(["breakWord", "breakSpaces"]),
     size: PropTypes.oneOf(["xs", "sm", "lg", "xlg"]),
     color: PropTypes.oneOf(["gray", "accent"]),
     dark: PropTypes.bool,
@@ -28,6 +29,7 @@ export default class extends Component {
     inline: false,
     italic: false,
     bold: false,
+    wordWrap: null,
     dark: false,
     light: false,
     link: null,
@@ -41,12 +43,14 @@ export default class extends Component {
   }
 
   render() {
-    const {invert, inline, italic, bold, size, children, link, target, color, dark, light} = this.props;
+    const {invert, inline, italic, bold, wordWrap, size, children, link, target, color, dark, light} = this.props;
     let classNames = classnames({
       [style["Text--invert"]]: invert,
       [style["Text--inline"]]: inline,
       [style["Text--bold"]]: bold,
       [style["Text--italic"]]: italic,
+      [style["Text--wordWrapBreakWord"]]: (wordWrap === "breakWord"),
+      [style["Text--wordWrapBreakSpaces"]]: (wordWrap === "breakSpaces"),
       [style["Text--xs"]]: (size === "xs"),
       [style["Text--sm"]]: (size === "sm"),
       [style["Text--lg"]]: (size === "lg"),
