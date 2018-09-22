@@ -1,5 +1,7 @@
 .ModalBody {
   padding: 10px;
-  height: calc(100% - 146px);
+  order: 2;
+  overflow: hidden;
   overflow-y: auto;
+  flex: 1 1 auto;
 }
