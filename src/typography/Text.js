@@ -13,6 +13,7 @@ export default class extends Component {
   static propTypes = {
     invert: PropTypes.bool,
     link: PropTypes.string,
+    linkStyle: PropTypes.bool,
     inline: PropTypes.bool,
     italic: PropTypes.bool,
     bold: PropTypes.bool,
@@ -33,6 +34,7 @@ export default class extends Component {
     dark: false,
     light: false,
     link: null,
+    linkStyle: false,
     color: null,
     size: null,
     target: null
@@ -43,7 +45,7 @@ export default class extends Component {
   }
 
   render() {
-    const {invert, inline, italic, bold, wordWrap, size, children, link, target, color, dark, light} = this.props;
+    const {invert, inline, italic, bold, wordWrap, size, children, link, linkStyle, target, color, dark, light} = this.props;
     let classNames = classnames({
       [style["Text--invert"]]: invert,
       [style["Text--inline"]]: inline,
@@ -67,9 +69,11 @@ export default class extends Component {
       colorClassNames = ` ${style[colorClassNames]}`;
     }
     classNames = `${style.Text}${classNames}${colorClassNames}`;
-    if (link) {
+    if (link || linkStyle) {
       classNames = `${style["Text--link"]} ${classNames}`;
-      return <a href={link} className={classNames} target={target}>{children}</a>
+      if (link) {
+        return <a href={link} className={classNames} target={target}>{children}</a>
+      }
     }
     return <p className={classNames}>{children}</p>
   }

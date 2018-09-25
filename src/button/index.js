@@ -42,10 +42,13 @@ export default class Button extends PureComponent {
       [style["Button--sm"]]: (size === "sm"),
       [style["Button--xsm"]]: (size === "xsm"),
     });
-    let colorStyle = `Button--color${capitalizeFirstLetter(color)}`;
+    let colorClassNames = "";
+    if (color) {
+      colorClassNames = ` ${style[`Button--color${capitalizeFirstLetter(color)}`]}`;
+    }
     if (loading) {
       return (
-        <button className={`${style.Button} ${classNames} ${colorStyle}`}
+        <button className={`${style.Button} ${classNames} ${colorClassNames}`}
                 onClick={loading || disabled ? null : onClick}>
           <Container centerTextAlign>
             <Loading><LoadingBlinkDots size="sm" invert/></Loading>
@@ -54,7 +57,7 @@ export default class Button extends PureComponent {
       );
     }
     return (
-      <button className={`${style.Button} ${classNames && classNames} ${colorStyle}`}
+      <button className={`${style.Button} ${classNames && classNames} ${colorClassNames}`}
               onClick={loading || disabled ? null : onClick}>
         {loading ? "" : this.props.children}
       </button>

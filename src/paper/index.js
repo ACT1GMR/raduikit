@@ -14,10 +14,12 @@ export default class Paper extends PureComponent {
     colorBackgroundDark: PropTypes.bool,
     colorBackgroundLight: PropTypes.bool,
     colorBackground: PropTypes.bool,
+    hasShadow: PropTypes.bool,
   };
 
   static defaultProps = {
     borderRadius: 0,
+    hasShadow: false,
     colorBackgroundDark: false,
     colorBackgroundLight: false,
     colorBackground: false
@@ -28,11 +30,12 @@ export default class Paper extends PureComponent {
   };
 
   render() {
-    let {borderRadius, colorBackgroundLight, colorBackgroundDark, colorBackground} = this.props;
+    const {borderRadius, colorBackgroundLight, colorBackgroundDark, colorBackground, hasShadow} = this.props;
     let classNames = classnames({
       [style["Paper--colorBackgroundLight"]]: colorBackgroundLight,
       [style["Paper--colorBackgroundDark"]]: colorBackgroundDark,
-      [style["Paper--colorBackground"]]: colorBackground
+      [style["Paper--colorBackground"]]: colorBackground,
+      [style["paper--hasShadow"]]: hasShadow
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
