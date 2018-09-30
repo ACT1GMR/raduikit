@@ -36,7 +36,7 @@ export default class AvatarImage extends PureComponent {
     }
     return (
       <div className={`${style.AvatarImage} ${classNames}`} style={inlineStyle}>
-        <img src={src} className={style.AvatarImage__Image}/>
+        <div style={{backgroundImage: `url('${src}')`}} className={style.AvatarImage__Image}/>
       </div>
     );
   }
