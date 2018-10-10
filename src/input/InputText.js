@@ -27,6 +27,14 @@ export default class InputText extends PureComponent {
     };
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
+    this.inputRef = React.createRef();
+  }
+
+  focus() {
+    this.setState({
+      focus: true,
+    });
+    this.inputRef.current.focus();
   }
 
   onFocus() {
