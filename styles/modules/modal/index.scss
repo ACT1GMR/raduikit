@@ -1,4 +1,4 @@
-@import "../../utils/responsive";
+@import "../../mixin/responsive";
 
 .Modal {
   position: fixed;
@@ -37,11 +37,12 @@
 }
 
 @include responsive("md") {
-  .Modal {
+
+  .Modal:not(.Modal--fullScreen).Modal {
     padding: 20px 0;
   }
 
-  .Modal__Content {
+  .Modal:not(.Modal--fullScreen) > .Modal__Content {
     border-radius: 5px;
     width: 480px;
     min-height: 0;

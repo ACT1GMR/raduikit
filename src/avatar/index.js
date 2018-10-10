@@ -3,6 +3,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import style from "../../styles/modules/avatar/index.scss";
 import classnames from "classnames";
+import Container from "../container";
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -29,9 +30,9 @@ export default class Avatar extends PureComponent {
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <div className={`${style.Avatar} ${classNames}`}>
+      <Container className={`${style.Avatar} ${classNames}`}>
         {children}
-      </div>
+      </Container>
     )
   }
 }

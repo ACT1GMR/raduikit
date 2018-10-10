@@ -1,8 +1,10 @@
 // src/loading/Dropdown
 import React, {Component} from "react";
+import ReactDOM from "react-dom";
 import style from "../../styles/modules/menu/Dropdown.scss";
 import classnames from "classnames";
 import List from "../list/index";
+import Container from "../container";
 
 export default class Dropdown extends Component {
 
@@ -23,9 +25,10 @@ export default class Dropdown extends Component {
 
   handleClickOutside(event) {
     const current = this.container.current;
+    const node = ReactDOM.findDOMNode(current);
     const {isOpen, onClose} = this.props;
     if (onClose) {
-      if (current && !current.contains(event.target)) {
+      if (node && !node.contains(event.target)) {
         if (isOpen) {
           onClose();
         }
@@ -36,11 +39,11 @@ export default class Dropdown extends Component {
   render() {
     const {isOpen} = this.props;
     return isOpen ?
-      <div className={style.Dropdown} ref={this.container}>
+      <Container className={style.Dropdown} ref={this.container}>
         <List>
           {this.props.children}
         </List>
-      </div>
+      </Container>
       : ""
   }
 }

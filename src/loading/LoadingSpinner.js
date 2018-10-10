@@ -1,6 +1,7 @@
 // src/loading/LoadingSpinner
 import React, {Component} from "react";
 import style from "../../styles/modules/loading/LoadingSpinner.scss";
+import Container from "../container";
 
 export default class LoadingSpinner extends Component {
 
@@ -9,9 +10,6 @@ export default class LoadingSpinner extends Component {
   }
 
   render() {
-    return (
-      <div className={style.LoadingSpinner}>
-      </div>
-    );
+    return  <Container className={style.LoadingSpinner}> </Container>;
   }
 }

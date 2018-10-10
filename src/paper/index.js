@@ -3,6 +3,7 @@ import React, {PureComponent} from "react";
 import style from "../../styles/modules/paper/index.scss";
 import classnames from "classnames";
 import PropTypes from "prop-types";
+import Container from "../container";
 
 export default class Paper extends PureComponent {
 
@@ -39,9 +40,9 @@ export default class Paper extends PureComponent {
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <div className={`${style.Paper}${classNames}`} style={{borderRadius}}>
+      <Container className={`${style.Paper}${classNames}`} style={{borderRadius}}>
         {this.props.children}
-      </div>
+      </Container>
     );
   }
 }

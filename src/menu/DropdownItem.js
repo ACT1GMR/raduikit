@@ -2,6 +2,7 @@
 import React, {Component} from "react";
 import style from "../../styles/modules/menu/DropdownItem.scss";
 import ListItem from "../list/ListItem";
+import Container from "../container";
 
 export default class DropdownItem extends Component {
 
@@ -18,7 +19,7 @@ export default class DropdownItem extends Component {
     const {onSelect, children, invert} = this.props;
     return (
       <ListItem selection invert={invert} onSelect={onSelect}>
-        <div className={style.DropdownItem}>{children}</div>
+        <Container className={style.DropdownItem}>{children}</Container>
       </ListItem>
     );
   }

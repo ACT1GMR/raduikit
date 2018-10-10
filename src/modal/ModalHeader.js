@@ -1,6 +1,7 @@
 // src/modal/ModalHeader
 import React, {Component} from "react";
 import style from "../../styles/modules/modal/ModalHeader.scss";
+import Container from "../container";
 
 export default class ModalHeader extends Component {
 
@@ -10,9 +11,9 @@ export default class ModalHeader extends Component {
 
   render() {
     return (
-      <div className={style.ModalHeader}>
+      <Container className={style.ModalHeader}>
         {this.props.children}
-      </div>
+      </Container>
     );
   }
 }

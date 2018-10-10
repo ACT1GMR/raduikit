@@ -3,6 +3,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import style from "../../styles/modules/avatar/AvatarName.scss";
+import Container from "../container";
 
 export default class AvatarName extends PureComponent {
 
@@ -36,7 +37,7 @@ export default class AvatarName extends PureComponent {
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <div className={`${style.AvatarName} ${classNames}`}>{children}</div>
+      <Container className={`${style.AvatarName} ${classNames}`}>{children}</Container>
     );
   }
 }

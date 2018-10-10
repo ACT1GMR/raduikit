@@ -2,6 +2,7 @@
 import React, {Component} from "react";
 import style from "../../styles/modules/shape/index.scss";
 import classnames from "classnames";
+import Container from "../container";
 
 export default class Shape extends Component {
 
@@ -26,9 +27,9 @@ export default class Shape extends Component {
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <div className={`${style.Shape}${classNames}`} {...other}>
+      <Container className={`${style.Shape}${classNames}`} {...other}>
         {this.props.children}
-      </div>
+      </Container>
     );
   }
 }

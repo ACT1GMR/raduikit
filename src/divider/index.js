@@ -2,6 +2,7 @@
 import React, {Component} from "react";
 import style from "../../styles/modules/divider/index.scss";
 import classnames from "classnames";
+import Container from "../container";
 
 export default class Divider extends Component {
 
@@ -25,9 +26,9 @@ export default class Divider extends Component {
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <div className={`${style.Divider}${classNames}`} style={inlineStyle}>
+      <Container className={`${style.Divider}${classNames}`} style={inlineStyle}>
         {this.props.children}
-      </div>
+      </Container>
     );
   }
 }

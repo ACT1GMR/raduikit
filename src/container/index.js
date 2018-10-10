@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import style from "../../styles/modules/container/index.scss"
 import classnames from "classnames";
 
-export default class Container extends PureComponent {
+export default class  Container extends PureComponent {
 
   static propTypes = {
     id: PropTypes.string,
@@ -112,7 +112,7 @@ export default class Container extends PureComponent {
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <div className={`${style.Container}${classNames ? classNames : ""}${className ? ` ${className}` : ""}`} style={{maxWidth, minWidth}} {...other}>
+      <div id={id} className={`${style.Container}${classNames ? classNames : ""}${className ? ` ${className}` : ""}`} style={{maxWidth, minWidth}} {...other}>
         {this.props.children}
       </div>
     );

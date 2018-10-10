@@ -2,6 +2,7 @@
 import React, {Component} from "react";
 import style from "../../styles/modules/shape/ShapeCircle.scss";
 import classnames from "classnames";
+import Container from "../container";
 
 export default class ShapeCircle extends Component {
 
@@ -11,9 +12,9 @@ export default class ShapeCircle extends Component {
 
   render() {
     return (
-      <div className={style.ShapeCircle}>
+      <Container className={style.ShapeCircle}>
         {this.props.children}
-      </div>
+      </Container>
     );
   }
 }

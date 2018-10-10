@@ -1,6 +1,7 @@
 // src/modal/ModalBody
 import React, {Component} from "react";
 import style from "../../styles/modules/modal/ModalBody.scss";
+import Container from "../container";
 
 export default class ModalBody extends Component {
 
@@ -10,9 +11,9 @@ export default class ModalBody extends Component {
 
   render() {
     return (
-      <div className={style.ModalBody}>
+      <Container className={style.ModalBody}>
         {this.props.children}
-      </div>
+      </Container>
     );
   }
 }

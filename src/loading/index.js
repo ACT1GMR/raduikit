@@ -2,6 +2,7 @@
 import React, {Component} from "react";
 import style from "../../styles/modules/loading/index.scss";
 import classnames from "classnames";
+import Container from "../container";
 
 export default class Loading extends Component {
 
@@ -20,9 +21,9 @@ export default class Loading extends Component {
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <div className={`${style.Loading}${classNames}`}>
+      <Container className={`${style.Loading}${classNames}`}>
         {this.props.children}
-      </div>
+      </Container>
     )
   }
 }

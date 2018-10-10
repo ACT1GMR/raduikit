@@ -1,6 +1,7 @@
 // src/modal/ModalFooter
 import React, {Component} from "react";
 import style from "../../styles/modules/modal/ModalFooter.scss";
+import Container from "../container";
 
 export default class ModalFooter extends Component {
 
@@ -10,9 +11,9 @@ export default class ModalFooter extends Component {
 
   render() {
     return (
-      <div className={style.ModalFooter}>
+      <Container className={style.ModalFooter}>
         {this.props.children}
-      </div>
+      </Container>
     );
   }
 }

@@ -3,6 +3,7 @@ import React, {Component} from "react";
 import style from "../../styles/modules/message/index.scss";
 import classnames from "classnames";
 import PropTypes from "prop-types";
+import Container from "../container";
 
 export default class Message extends Component {
 
@@ -30,9 +31,9 @@ export default class Message extends Component {
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <div className={`${style.Message}${classNames}`}>
+      <Container className={`${style.Message}${classNames}`}>
         {this.props.children}
-      </div>
+      </Container>
     );
   }
 }

@@ -3,6 +3,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import style from "../../styles/modules/avatar/AvatarImage.scss";
+import Container from "../container";
 
 export default class AvatarImage extends PureComponent {
 
@@ -35,9 +36,9 @@ export default class AvatarImage extends PureComponent {
       inlineStyle = {...inlineStyle, ...{width: customSize, height: customSize}};
     }
     return (
-      <div className={`${style.AvatarImage} ${classNames}`} style={inlineStyle}>
-        <div style={{backgroundImage: `url('${src}')`}} className={style.AvatarImage__Image}/>
-      </div>
+      <Container className={`${style.AvatarImage} ${classNames}`} style={inlineStyle}>
+        <Container style={{backgroundImage: `url('${src}')`}} className={style.AvatarImage__Image}/>
+      </Container>
     );
   }
 }

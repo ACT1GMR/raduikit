@@ -1,6 +1,7 @@
 // src/content/ContentFooter
 import React, { PureComponent } from "react";
 import style from "../../styles/modules/paper/PaperFooter.scss";
+import Container from "../container";
 
 export default class PaperFooter extends PureComponent {
 
@@ -10,9 +11,9 @@ export default class PaperFooter extends PureComponent {
 
   render() {
     return (
-      <div className={style.PaperFooter}>
+      <Container className={style.PaperFooter}>
         {this.props.children}
-      </div>
+      </Container>
     );
   };
 };

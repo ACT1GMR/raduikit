@@ -1,8 +1,9 @@
 // src/input/InputText
-import React, { PureComponent } from "react";
+import React, {PureComponent} from "react";
 import classnames from "classnames";
 import style from "../../styles/modules/input/InputText.scss";
 import PropTypes from "prop-types";
+import Container from "../container";
 
 export default class InputText extends PureComponent {
 
@@ -14,7 +15,8 @@ export default class InputText extends PureComponent {
 
   static defaultProps = {
     value: "",
-    onChange: e => { },
+    onChange: e => {
+    },
     placeholder: null
   };
 
@@ -40,19 +42,20 @@ export default class InputText extends PureComponent {
   }
 
   render() {
-    const { value, onChange, placeholder } = this.props;
-    const { focus } = this.state;
-    let classNames = classnames({ [style["InputText--focus"]]: focus });
+    const {value, onChange, placeholder} = this.props;
+    const {focus} = this.state;
+    let classNames = classnames({[style["InputText--focus"]]: focus});
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <div className={`${style.InputText}${classNames}`}>
+      <Container className={`${style.InputText}${classNames}`}>
         <input className={style.InputText__Input}
-          onChange={onChange}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          value={value}
-          placeholder={placeholder} />
-      </div>
+               ref={this.inputRef}
+               onChange={onChange}
+               onFocus={this.onFocus}
+               onBlur={this.onBlur}
+               value={value}
+               placeholder={placeholder}/>
+      </Container>
     );
   }
 }
