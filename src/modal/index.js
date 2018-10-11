@@ -13,11 +13,13 @@ export default class extends Component {
 
   static propTypes = {
     isOpen: PropTypes.bool,
-    fullSreen: PropTypes.bool,
+    inContainer: PropTypes.bool,
+    fullScreen: PropTypes.bool
   };
 
   static defaultProps = {
     isOpen: false,
+    inContainer: false,
     fullScreen: false
   };
 
@@ -37,9 +39,10 @@ export default class extends Component {
   }
 
   render() {
-    const {isOpen, fullScreen} = this.props;
+    const {isOpen, inContainer, fullScreen} = this.props;
     const classNames = classnames({
       [style.Modal]: true,
+      [style["Modal--inContainer"]]: inContainer,
       [style["Modal--fullScreen"]]: fullScreen
     });
     return isOpen ?
