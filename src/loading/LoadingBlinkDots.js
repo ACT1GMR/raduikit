@@ -3,6 +3,7 @@ import React, {Component} from "react";
 import style from "../../styles/modules/loading/LoadingBlinkDots.scss";
 import classnames from "classnames";
 import PropTypes from "prop-types";
+import Container from "../container";
 
 export default class LoadingBlinkDots extends Component {
 
@@ -30,7 +31,7 @@ export default class LoadingBlinkDots extends Component {
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <p className={`${style.LoadingBlinkDots}${classNames}`}><span className={style.LoadingBlinkDots__Dot}/><span className={style.LoadingBlinkDots__Dot}/><span className={style.LoadingBlinkDots__Dot}/></p>
+      <Container className={`${style.LoadingBlinkDots}${classNames}`}><span className={style.LoadingBlinkDots__Dot}/><span className={style.LoadingBlinkDots__Dot}/><span className={style.LoadingBlinkDots__Dot}/></Container>
     );
   }
 }

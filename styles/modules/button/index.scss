@@ -21,6 +21,11 @@
   background-color: $color-accent-dark;
 }
 
+.Button::-moz-focus-inner {
+  border: 0;
+  padding: 0
+}
+
 //SIZES
 .Button--sm {
   padding: 7px 8px;
@@ -33,7 +38,6 @@
 .Button--xlg {
   padding: 9px 36px;
 }
-
 
 //PRIMARY
 .Button--colorPrimary {
@@ -79,7 +83,6 @@
 .Button--colorYellow:hover {
   background-color: $color-yellow-dark;
 }
-
 
 //BUTTON TYPE TEXT,OUTLINED
 .Button--text,
