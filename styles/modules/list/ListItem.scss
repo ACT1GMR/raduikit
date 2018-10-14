@@ -1,4 +1,7 @@
+@import "../../mixin/resetStyle";
+
 .ListItem {
+  @include resetStyleMixin();
   padding: 10px;
 }
 

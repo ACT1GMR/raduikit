@@ -1,4 +1,7 @@
+@import "../../mixin/resetStyle";
+
 .Heading {
+  @include resetStyleMixin();
   color: $color-text;
 }
 

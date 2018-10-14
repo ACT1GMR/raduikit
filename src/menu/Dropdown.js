@@ -1,10 +1,9 @@
 // src/loading/Dropdown
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
-import style from "../../styles/modules/menu/Dropdown.scss";
-import classnames from "classnames";
-import List from "../list/index";
 import Container from "../container";
+import List from "../list/index";
+import style from "../../styles/modules/menu/Dropdown.scss";
 
 export default class Dropdown extends Component {
 

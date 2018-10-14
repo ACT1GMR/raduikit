@@ -51,7 +51,7 @@ export default class Button extends PureComponent {
         <button className={`${style.Button} ${classNames} ${colorClassNames}`}
                 onClick={loading || disabled ? null : onClick}>
           <Container centerTextAlign>
-            <Loading><LoadingBlinkDots size="sm" invert/></Loading>
+            <Loading><LoadingBlinkDots size="sm"/></Loading>
           </Container>
         </button>
       );

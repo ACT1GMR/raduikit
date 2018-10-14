@@ -1,4 +1,7 @@
+@import "../../mixin/resetStyle";
+
 .Text {
+  @include resetStyleMixin();
   font-size: $font-size-base;
   line-height: 2;
   color: $color-text;
@@ -78,4 +81,10 @@
 
 .Text--wordWrapBreakSpaces {
   word-wrap: break-spaces;
+}
+
+
+.Text--overflowEllipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

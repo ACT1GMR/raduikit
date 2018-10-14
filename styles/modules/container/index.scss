@@ -1,5 +1,7 @@
+@import "../../mixin/resetStyle";
+
 .Container {
-  outline: 0;
+  @include resetStyleMixin();
 }
 
 .Container--inline {

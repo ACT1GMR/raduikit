@@ -1,5 +1,0 @@
-@import "mixin/resetStyle";
-
-.Container, .Heading, .Text, .List, .ListItem, .Image {
-  @include resetStyleMixin();
-}
