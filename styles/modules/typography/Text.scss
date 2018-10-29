@@ -83,6 +83,13 @@
   word-wrap: break-spaces;
 }
 
+.Text--whiteSpacePreWrap {
+  white-space: pre-wrap;
+}
+
+.Text--whiteSpacePre {
+  white-space: pre;
+}
 
 .Text--overflowEllipsis {
   overflow: hidden;
