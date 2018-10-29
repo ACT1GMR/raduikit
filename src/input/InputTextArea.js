@@ -1,7 +1,6 @@
 // src/input/InputText
 import React, {PureComponent} from "react";
 import classnames from "classnames";
-import ContentEditable from "react-sane-contenteditable";
 import ReactDOM from "react-dom";
 import style from "../../styles/modules/input/InputTextArea.scss";
 import PropTypes from "prop-types";
