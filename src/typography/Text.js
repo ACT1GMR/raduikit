@@ -14,6 +14,7 @@ export default class extends Component {
     invert: PropTypes.bool,
     link: PropTypes.string,
     linkStyle: PropTypes.bool,
+    linkClearStyle: PropTypes.bool,
     inline: PropTypes.bool,
     italic: PropTypes.bool,
     bold: PropTypes.bool,
@@ -39,6 +40,7 @@ export default class extends Component {
     light: false,
     link: null,
     linkStyle: false,
+    linkClearStyle: false,
     color: null,
     size: null,
     target: null
@@ -49,8 +51,19 @@ export default class extends Component {
   }
 
   render() {
-    const {invert, inline, italic, bold, wordWrap, size, children, link, linkStyle, target, color, dark, light, overflow, whiteSpace} = this.props;
+    const {invert, inline, italic, bold, wordWrap, size, children, link, linkStyle, linkClearStyle, target, color, dark, light, overflow, whiteSpace, ...other} = this.props;
+    let colorClassNames = "";
+    if (color) {
+      colorClassNames = `Text--color${capitalizeFirstLetter(color)}`;
+      if (dark || light) {
+        colorClassNames += light ? "Light" : "Dark";
+      }
+    }
     let classNames = classnames({
+      [style.Text]: true,
+      [style["Text--link"]]: link || linkStyle,
+      [style["Text--linkClearStyle"]]: linkClearStyle,
+      [style[colorClassNames]]: colorClassNames,
       [style["Text--invert"]]: invert,
       [style["Text--inline"]]: inline,
       [style["Text--bold"]]: bold,
@@ -65,23 +78,9 @@ export default class extends Component {
       [style["Text--lg"]]: (size === "lg"),
       [style["Text--xlg"]]: (size === "xlg"),
     });
-    if (classNames) classNames = ` ${classNames}`;
-
-    let colorClassNames = "";
-    if (color) {
-      colorClassNames = `Text--color${capitalizeFirstLetter(color)}`;
-      if (dark || light) {
-        colorClassNames += light ? "Light" : "Dark";
-      }
-      colorClassNames = ` ${style[colorClassNames]}`;
+    if (link) {
+      return <a href={link} className={classNames} target={target} {...other}>{children}</a>
     }
-    classNames = `${style.Text}${classNames}${colorClassNames}`;
-    if (link || linkStyle) {
-      classNames = `${style["Text--link"]} ${classNames}`;
-      if (link) {
-        return <a href={link} className={classNames} target={target}>{children}</a>
-      }
-    }
-    return <p className={classNames}>{children}</p>
+    return <p className={classNames} {...other}>{children}</p>
   }
 }

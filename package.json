@@ -1,6 +1,6 @@
 {
   "name": "raduikit",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "UI kit is an progressive ui components built in react and help you to build your web app",
   "main": "src",
   "scripts": {
@@ -57,7 +57,9 @@
     "webpack-dev-server": "^3.1.1"
   },
   "dependencies": {
+    "@fancyapps/fancybox": "^3.5.2",
     "classnames": "^2.2.6",
+    "jquery": "^3.3.1",
     "prop-types": "^15.6.2",
     "react-icons": "^2.2.7"
   }

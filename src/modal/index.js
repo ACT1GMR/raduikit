@@ -1,8 +1,5 @@
 // src/modal/index
 import React, {Component} from "react";
-import ModalBody from "./ModalBody";
-import ModalFooter from "./ModalFooter";
-import ModalHeader from "./ModalHeader";
 import Container from "../container";
 import style from "../../styles/modules/modal/index.scss";
 import PropTypes from "prop-types";
@@ -56,4 +53,7 @@ export default class extends Component {
   }
 }
 
-export {ModalBody, ModalHeader, ModalFooter};
+export {default as ModalBody} from "./ModalBody";
+export {default as ModalHeader} from "./ModalHeader";
+export {default as ModalFooter} from "./ModalFooter";
+export {default as ModalMedia} from "./ModalMedia";

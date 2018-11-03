@@ -1,0 +1,9 @@
+@import "../../../node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css";
+
+.fancybox-is-open .fancybox-bg {
+  opacity: 1;
+}
+
+.fancybox-caption {
+  font-family: $font-family;
+}
