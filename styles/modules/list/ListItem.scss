@@ -18,6 +18,30 @@
   background-color: $color-primary-light;
 }
 
+.ListItem--activeColorGray {
+  background-color: $color-gray !important;
+}
+
+.ListItem--activeColorGrayLight {
+  background-color: $color-gray-light !important;
+}
+
+.ListItem--activeColorGrayDark {
+  background-color: $color-gray-dark !important;
+}
+
+.ListItem--activeColorAccent {
+  background-color: $color-accent !important;
+}
+
+.ListItem--activeColorLight {
+  background-color: $color-accent-light !important;
+}
+
+.ListItem--activeColorDark {
+  background-color: $color-accent-dark !important;
+}
+
 .ListItem__Tick {
   color: $color-white;
   margin: 0 15px;

@@ -6,6 +6,10 @@ import style from "../../styles/modules/list/ListItem.scss";
 import {MdCheck} from "react-icons/lib/md";
 import Container from "../container";
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 class ListItem extends Component {
 
   static propTypes = {
@@ -16,6 +20,9 @@ class ListItem extends Component {
     activeWithTick: PropTypes.bool,
     onSelect: PropTypes.func,
     onDeSelect: PropTypes.func,
+    activeColor: PropTypes.oneOf(["gray", "accent"]),
+    activeColorDark: PropTypes.bool,
+    activeColorLight: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -24,6 +31,9 @@ class ListItem extends Component {
     invert: false,
     active: false,
     activeWithTick: false,
+    activeColor: null,
+    activeColorLight: false,
+    activeColorDark: false,
     onSelect: e => {
     },
     onDeSelect: e => {
@@ -50,14 +60,23 @@ class ListItem extends Component {
   }
 
   render() {
-    const {selection, active, activeWithTick, invert, value, children} = this.props;
+    const {selection, active, activeWithTick, invert, children, activeColor, activeColorLight, activeColorDark} = this.props;
+    let activeColorClassNames = "";
+    if (activeColor) {
+      activeColorClassNames = `ListItem--activeColor${capitalizeFirstLetter(activeColor)}`;
+      if (activeColorLight || activeColorDark) {
+        activeColorClassNames += activeColorLight ? "Light" : "Dark";
+      }
+    }
     let classNames = classnames({
+      [style.ListItem]: true,
+      [style[activeColorClassNames]]: active && activeColorClassNames,
       [style["ListItem--selection"]]: selection,
       [style["ListItem--active"]]: active,
       [style["ListItem--invert"]]: invert,
     });
     return (
-      <li className={`${style.ListItem} ${classNames && classNames}`} onClick={this.onClick}>
+      <li className={classNames} onClick={this.onClick}>
         {children}
         {activeWithTick && active ?
           <Container centerLeft>
