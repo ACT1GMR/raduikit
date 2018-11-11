@@ -53,7 +53,6 @@ export default class InputTextArea extends PureComponent {
     sel.addRange(range);
     node.focus();
     range.detach();
-    node.scrollTop = node.scrollHeight;
   }
 
   componentDidUpdate() {
@@ -90,7 +89,7 @@ export default class InputTextArea extends PureComponent {
         </Container>
         }
         <Container
-          contentEditable="plaintext-only"
+          contentEditable="true"
           suppressContentEditableWarning="true"
           className={inputClassNames}
           ref={this.inputRef}

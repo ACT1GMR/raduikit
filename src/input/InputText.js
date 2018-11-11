@@ -9,12 +9,14 @@ export default class InputText extends PureComponent {
 
   static propTypes = {
     value: PropTypes.string,
+    className: PropTypes.string,
     onChange: PropTypes.func,
     placeholder: PropTypes.string
   };
 
   static defaultProps = {
     value: "",
+    className: null,
     onChange: e => {
     },
     placeholder: null
@@ -32,30 +34,33 @@ export default class InputText extends PureComponent {
 
   focus() {
     this.setState({
-      focus: true,
+      focus: true
     });
     this.inputRef.current.focus();
   }
 
   onFocus() {
     this.setState({
-      focus: true,
+      focus: true
     });
   }
 
   onBlur() {
     this.setState({
-      focus: false,
+      focus: false
     });
   }
 
   render() {
-    const {value, onChange, placeholder} = this.props;
+    const {value, onChange, placeholder, className} = this.props;
     const {focus} = this.state;
-    let classNames = classnames({[style["InputText--focus"]]: focus});
-    if (classNames) classNames = ` ${classNames}`;
+    const classNames = classnames({
+      [style.InputText]: true,
+      [style["InputText--focus"]]: focus,
+      [className]: className
+    });
     return (
-      <Container className={`${style.InputText}${classNames}`}>
+      <Container className={classNames}>
         <input className={style.InputText__Input}
                ref={this.inputRef}
                onChange={onChange}
