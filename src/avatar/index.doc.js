@@ -37,6 +37,6 @@ storiesOf('UI/avatar', module)
   ))  
   .addWithJSX('AvatarText', () => (
     <AvatarText>
-      <h3> raduikit </h3>
+      <h3> ../../../../uikit </h3>
     </AvatarText>
   ));

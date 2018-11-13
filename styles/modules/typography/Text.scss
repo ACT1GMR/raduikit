@@ -8,6 +8,10 @@
   font-weight: normal;
 }
 
+.Text--noLineHeight {
+  line-height: 0;
+}
+
 .Text--invert {
   color: $color-text-invert !important;
 }

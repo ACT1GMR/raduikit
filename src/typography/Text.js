@@ -12,11 +12,12 @@ export default class extends Component {
 
   static propTypes = {
     invert: PropTypes.bool,
+    inline: PropTypes.bool,
+    italic: PropTypes.bool,
+    noLineHeight: PropTypes.bool,
     link: PropTypes.string,
     linkStyle: PropTypes.bool,
     linkClearStyle: PropTypes.bool,
-    inline: PropTypes.bool,
-    italic: PropTypes.bool,
     bold: PropTypes.bool,
     wordWrap: PropTypes.oneOf(["breakWord", "breakSpaces"]),
     whiteSpace: PropTypes.oneOf(["pre", "preWrap"]),
@@ -33,6 +34,7 @@ export default class extends Component {
     inline: false,
     italic: false,
     bold: false,
+    noLineHeight: false,
     wordWrap: null,
     whiteSpace: null,
     overflow: null,
@@ -51,7 +53,7 @@ export default class extends Component {
   }
 
   render() {
-    const {invert, inline, italic, bold, wordWrap, size, children, link, linkStyle, linkClearStyle, target, color, dark, light, overflow, whiteSpace, ...other} = this.props;
+    const {invert, inline, italic, bold, wordWrap, size, children, link, linkStyle, linkClearStyle, target, color, dark, light, overflow, whiteSpace, noLineHeight, ...other} = this.props;
     let colorClassNames = "";
     if (color) {
       colorClassNames = `Text--color${capitalizeFirstLetter(color)}`;
@@ -61,6 +63,7 @@ export default class extends Component {
     }
     let classNames = classnames({
       [style.Text]: true,
+      [style["Text--noLineHeight"]]: noLineHeight,
       [style["Text--link"]]: link || linkStyle,
       [style["Text--linkClearStyle"]]: linkClearStyle,
       [style[colorClassNames]]: colorClassNames,
