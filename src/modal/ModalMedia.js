@@ -1,17 +1,17 @@
 // src/modal/ModalBody
 import React, {Component} from "react";
 import "../../styles/modules/modal/ModalMedia.scss";
+import $ from "jquery";
 
 export default class ModalMedia extends Component {
 
   constructor(props) {
     super(props);
-    window.jQuery = require("jquery");
-    require("@fancyapps/fancybox");
+    require("fancybox-scopial")(window, window.document, $);
   }
 
   componentDidMount() {
-    jQuery().fancybox(this.props);
+    $().fancybox(this.props);
   }
 
   render() {

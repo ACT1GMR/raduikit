@@ -9,7 +9,7 @@ import {Text} from "../typography";
 export default class AvatarImage extends PureComponent {
 
   static propTypes = {
-    src: PropTypes.string.isRequired,
+    src: PropTypes.any,
     size: PropTypes.oneOf(['sm', 'lg', 'xlg']),
     customSize: PropTypes.string,
     text: PropTypes.string,
@@ -47,7 +47,7 @@ export default class AvatarImage extends PureComponent {
             <Text bold color="gray" light noLineHeight>{text}</Text>
           </Container>
         </Container>
-        <Container relative style={{backgroundImage: `url('${src}')`}} className={style.AvatarImage__Image}/>
+        {src && <Container relative style={{backgroundImage: `url('${src}')`}} className={style.AvatarImage__Image}/>}
       </Container>
     );
   }
