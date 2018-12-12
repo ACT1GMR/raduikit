@@ -8,10 +8,15 @@ export default class ModalMedia extends Component {
   constructor(props) {
     super(props);
     require("fancybox-scopial")(window, window.document, $);
+    this.close = this.close.bind(this);
+  }
+
+  close() {
+    $.fancybox.close();
   }
 
   componentDidMount() {
-    $().fancybox(this.props);
+    window.foo = this.modalMedia = $().fancybox(this.props);
   }
 
   render() {

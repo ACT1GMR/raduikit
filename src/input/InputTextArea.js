@@ -56,6 +56,8 @@ export default class InputTextArea extends PureComponent {
   }
 
   componentDidUpdate() {
+    const node = ReactDOM.findDOMNode(this.inputRef.current);
+    node.innerHTML = node.innerHTML + this.props.value;
     this.setCaretToEnd();
   }
 
@@ -93,7 +95,7 @@ export default class InputTextArea extends PureComponent {
           suppressContentEditableWarning="true"
           className={inputClassNames}
           ref={this.inputRef}
-          onInput={onChange}>{value}</Container>
+          onInput={onChange}/>
       </Container>
     );
   }

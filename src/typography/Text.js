@@ -15,6 +15,7 @@ export default class extends Component {
     inline: PropTypes.bool,
     italic: PropTypes.bool,
     noLineHeight: PropTypes.bool,
+    isHTML: PropTypes.bool,
     link: PropTypes.string,
     linkStyle: PropTypes.bool,
     linkClearStyle: PropTypes.bool,
@@ -35,6 +36,7 @@ export default class extends Component {
     italic: false,
     bold: false,
     noLineHeight: false,
+    isHTML: false,
     wordWrap: null,
     whiteSpace: null,
     overflow: null,
@@ -50,10 +52,18 @@ export default class extends Component {
 
   constructor(props) {
     super(props);
+    this.node = React.createRef();
+  }
+
+  componentDidMount() {
+    const {isHTML, children} = this.props;
+    if (isHTML) {
+      this.node.current.innerHTML = children;
+    }
   }
 
   render() {
-    const {invert, inline, italic, bold, wordWrap, size, children, link, linkStyle, linkClearStyle, target, color, dark, light, overflow, whiteSpace, noLineHeight, ...other} = this.props;
+    const {invert, inline, italic, bold, isHTML, wordWrap, size, children, link, linkStyle, linkClearStyle, target, color, dark, light, overflow, whiteSpace, noLineHeight, ...other} = this.props;
     let colorClassNames = "";
     if (color) {
       colorClassNames = `Text--color${capitalizeFirstLetter(color)}`;
@@ -83,6 +93,9 @@ export default class extends Component {
     });
     if (link) {
       return <a href={link} className={classNames} target={target} {...other}>{children}</a>
+    }
+    if (isHTML) {
+      return <p className={classNames} {...other} ref={this.node}/>
     }
     return <p className={classNames} {...other}>{children}</p>
   }
