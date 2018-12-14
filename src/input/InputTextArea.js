@@ -57,7 +57,7 @@ export default class InputTextArea extends PureComponent {
 
   componentDidUpdate() {
     const node = ReactDOM.findDOMNode(this.inputRef.current);
-    node.innerHTML = node.innerHTML + this.props.value;
+    node.innerHTML = this.props.value;
     this.setCaretToEnd();
   }
 

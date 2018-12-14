@@ -61,6 +61,12 @@ export default class extends Component {
       this.node.current.innerHTML = children;
     }
   }
+  componentDidUpdate() {
+    const {isHTML, children} = this.props;
+    if (isHTML) {
+      this.node.current.innerHTML = children;
+    }
+  }
 
   render() {
     const {invert, inline, italic, bold, isHTML, wordWrap, size, children, link, linkStyle, linkClearStyle, target, color, dark, light, overflow, whiteSpace, noLineHeight, ...other} = this.props;
