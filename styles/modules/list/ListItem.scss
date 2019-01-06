@@ -5,6 +5,10 @@
   padding: 10px;
 }
 
+.ListItem--noPadding {
+  padding: 0;
+}
+
 .ListItem--selection {
   cursor: pointer;
   position: relative;

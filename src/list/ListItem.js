@@ -14,6 +14,7 @@ class ListItem extends Component {
 
   static propTypes = {
     selection: PropTypes.bool,
+    noPadding: PropTypes.bool,
     multiple: PropTypes.bool,
     invert: PropTypes.bool,
     active: PropTypes.bool,
@@ -28,6 +29,7 @@ class ListItem extends Component {
   static defaultProps = {
     selection: false,
     multiple: false,
+    noPadding: false,
     invert: false,
     active: false,
     activeWithTick: false,
@@ -60,7 +62,7 @@ class ListItem extends Component {
   }
 
   render() {
-    const {selection, active, activeWithTick, invert, children, activeColor, activeColorLight, activeColorDark} = this.props;
+    const {selection, active, activeWithTick, invert, children, activeColor, activeColorLight, activeColorDark, noPadding} = this.props;
     let activeColorClassNames = "";
     if (activeColor) {
       activeColorClassNames = `ListItem--activeColor${capitalizeFirstLetter(activeColor)}`;
@@ -71,6 +73,7 @@ class ListItem extends Component {
     let classNames = classnames({
       [style.ListItem]: true,
       [style[activeColorClassNames]]: active && activeColorClassNames,
+      [style["ListItem--noPadding"]]: noPadding,
       [style["ListItem--selection"]]: selection,
       [style["ListItem--active"]]: active,
       [style["ListItem--invert"]]: invert,

@@ -16,7 +16,7 @@ export default class ModalMedia extends Component {
   }
 
   componentDidMount() {
-    window.foo = this.modalMedia = $().fancybox(this.props);
+    this.modalMedia = $().fancybox(this.props);
   }
 
   render() {

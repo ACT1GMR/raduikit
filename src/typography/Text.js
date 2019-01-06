@@ -1,5 +1,6 @@
 // src/typography/Text
 import React, {Component} from "react";
+import sanitizeHtml from "sanitize-html";
 import style from "../../styles/modules/typography/Text.scss";
 import classnames from "classnames";
 import PropTypes from "prop-types";
@@ -16,6 +17,7 @@ export default class extends Component {
     italic: PropTypes.bool,
     noLineHeight: PropTypes.bool,
     isHTML: PropTypes.bool,
+    sanitizeRule: PropTypes.object,
     link: PropTypes.string,
     linkStyle: PropTypes.bool,
     linkClearStyle: PropTypes.bool,
@@ -37,6 +39,7 @@ export default class extends Component {
     bold: false,
     noLineHeight: false,
     isHTML: false,
+    sanitizeRule: null,
     wordWrap: null,
     whiteSpace: null,
     overflow: null,
@@ -55,21 +58,27 @@ export default class extends Component {
     this.node = React.createRef();
   }
 
-  componentDidMount() {
-    const {isHTML, children} = this.props;
+  _updateValue() {
+    const {isHTML, children, sanitizeRule} = this.props;
+    let value = children;
     if (isHTML) {
-      this.node.current.innerHTML = children;
-    }
-  }
-  componentDidUpdate() {
-    const {isHTML, children} = this.props;
-    if (isHTML) {
-      this.node.current.innerHTML = children;
+      if (sanitizeRule) {
+        value = sanitizeHtml(value, sanitizeRule);
+      }
+      this.node.current.innerHTML = value;
     }
   }
 
+  componentDidMount() {
+    this._updateValue();
+  }
+
+  componentDidUpdate() {
+    this._updateValue();
+  }
+
   render() {
-    const {invert, inline, italic, bold, isHTML, wordWrap, size, children, link, linkStyle, linkClearStyle, target, color, dark, light, overflow, whiteSpace, noLineHeight, ...other} = this.props;
+    const {invert, inline, italic, bold, isHTML, wordWrap, size, children, link, linkStyle, linkClearStyle, target, color, dark, light, overflow, whiteSpace, noLineHeight, sanitizeRule, ...other} = this.props;
     let colorClassNames = "";
     if (color) {
       colorClassNames = `Text--color${capitalizeFirstLetter(color)}`;

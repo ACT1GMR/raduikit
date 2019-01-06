@@ -1,5 +1,6 @@
 // src/input/InputText
 import React, {PureComponent} from "react";
+import sanitizeHtml from "sanitize-html";
 import classnames from "classnames";
 import ReactDOM from "react-dom";
 import style from "../../styles/modules/input/InputTextArea.scss";
@@ -12,6 +13,7 @@ export default class InputTextArea extends PureComponent {
 
   static propTypes = {
     value: PropTypes.string,
+    sanitizeRule: PropTypes.object,
     onChange: PropTypes.func,
     placeholder: PropTypes.string,
     className: PropTypes.string,
@@ -20,6 +22,7 @@ export default class InputTextArea extends PureComponent {
 
   static defaultProps = {
     value: null,
+    sanitizeRule: null,
     className: null,
     inputClassName: null,
     onChange: e => {
@@ -33,6 +36,7 @@ export default class InputTextArea extends PureComponent {
       focus: false,
     };
     this.onBlur = this.onBlur.bind(this);
+    this.onInput = this.onInput.bind(this);
     this.inputRef = React.createRef();
   }
 
@@ -51,14 +55,19 @@ export default class InputTextArea extends PureComponent {
     range.collapse(false);
     sel.removeAllRanges();
     sel.addRange(range);
-    node.focus();
+    //node.focus();
     range.detach();
   }
 
   componentDidUpdate() {
     const node = ReactDOM.findDOMNode(this.inputRef.current);
-    node.innerHTML = this.props.value;
+    node.innerHTML = this.sanitize();
     this.setCaretToEnd();
+  }
+
+  sanitize(initValue) {
+    const {value, sanitizeRule} = this.props;
+    return sanitizeHtml(initValue || value, sanitizeRule);
   }
 
   onBlur() {
@@ -67,8 +76,27 @@ export default class InputTextArea extends PureComponent {
     });
   }
 
+  onInput(e) {
+    const node = ReactDOM.findDOMNode(this.inputRef.current);
+    const html = e.target.innerHTML.trim();
+    if (!html) {
+      node.innerHTML = "";
+    } else {
+      if (html === "<br>") {
+        node.innerHTML = "";
+      } else {
+        node.innerHTML = this.sanitize(e.target.innerHTML);
+      }
+    }
+    this.setCaretToEnd();
+    const {onChange} = this.props;
+    if (onChange) {
+      onChange(e);
+    }
+  }
+
   render() {
-    const {value, onChange, placeholder, className, inputClassName} = this.props;
+    const {value, placeholder, className, inputClassName} = this.props;
     const {focus} = this.state;
     const hasValue = value && value.trim();
     const classNames = classnames({
@@ -95,7 +123,7 @@ export default class InputTextArea extends PureComponent {
           suppressContentEditableWarning="true"
           className={inputClassNames}
           ref={this.inputRef}
-          onInput={onChange}/>
+          onInput={this.onInput}/>
       </Container>
     );
   }

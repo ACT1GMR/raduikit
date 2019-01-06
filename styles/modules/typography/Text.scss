@@ -12,6 +12,13 @@
   line-height: 0;
 }
 
+.Text--link {
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 2px solid $color-gray;
+  cursor: pointer;
+}
+
 .Text--invert {
   color: $color-text-invert;
 }
@@ -40,15 +47,32 @@
   color: $color-accent-dark;
 }
 
-.Text--inline {
-  display: inline;
+.Text--colorGreen {
+  color: $color-green;
 }
 
-.Text--link {
-  text-decoration: none;
-  color: inherit;
-  border-bottom: 2px solid $color-gray;
-  cursor: pointer;
+.Text--colorAccentLight {
+  color: $color-green-light;
+}
+
+.Text--colorAccentDark {
+  color: $color-green-dark;
+}
+
+.Text--colorRed {
+  color: $color-red;
+}
+
+.Text--colorRedLight {
+  color: $color-red-light;
+}
+
+.Text--colorRedDark {
+  color: $color-red-dark;
+}
+
+.Text--inline {
+  display: inline;
 }
 
 .Text--linkClearStyle {

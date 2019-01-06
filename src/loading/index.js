@@ -7,7 +7,8 @@ import Container from "../container";
 export default class Loading extends Component {
 
   static defaultProps = {
-    hasSpace: false
+    hasSpace: false,
+    inline: false
   };
 
   constructor(props) {
@@ -15,14 +16,14 @@ export default class Loading extends Component {
   }
 
   render() {
-    let {hasSpace} = this.props;
+    let {hasSpace, children, inline} = this.props;
     let classNames = classnames({
+      [style.Loading]: true,
       [style["Loading--hasSpace"]]: hasSpace
     });
-    if (classNames) classNames = ` ${classNames}`;
     return (
-      <Container className={`${style.Loading}${classNames}`}>
-        {this.props.children}
+      <Container className={classNames} inline={inline}>
+        {children}
       </Container>
     )
   }

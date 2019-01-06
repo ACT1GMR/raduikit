@@ -89,6 +89,7 @@ export default class  Container extends PureComponent {
       ...other
     } = this.props;
     let classNames = classnames({
+      [style.Container]: true,
       [style["Container--maxWidth"]]: maxWidth,
       [style["Container--minWidth"]]: minWidth,
       [style["Container--inline"]]: inline,
@@ -108,11 +109,11 @@ export default class  Container extends PureComponent {
       [style["Container--bottomCenter"]]: bottomCenter,
       [style["Container--topRight"]]: topRight,
       [style["Container--topLeft"]]: topLeft,
-      [style["Container--topCenter"]]: topCenter
+      [style["Container--topCenter"]]: topCenter,
+      [className]: className
     });
-    if (classNames) classNames = ` ${classNames}`;
     return (
-      <div id={id} className={`${style.Container}${classNames ? classNames : ""}${className ? ` ${className}` : ""}`} style={{maxWidth, minWidth}} {...other}>
+      <div id={id} className={classNames} style={{maxWidth, minWidth}} {...other}>
         {this.props.children}
       </div>
     );
