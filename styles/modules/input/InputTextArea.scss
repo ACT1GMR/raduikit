@@ -26,7 +26,9 @@
   max-height: 100px;
   line-height: $line-height-base;
   overflow-y: auto;
-  white-space: pre-wrap;
   position: relative;
+  white-space: pre-wrap;
+  -moz-user-select: text !important;
+
   z-index: 1;
 }

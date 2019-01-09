@@ -1,13 +1,13 @@
 // src/input/InputText
 import React, {PureComponent} from "react";
 import sanitizeHtml from "sanitize-html";
+import ContentEditable from "react-contenteditable";
 import classnames from "classnames";
-import ReactDOM from "react-dom";
-import style from "../../styles/modules/input/InputTextArea.scss";
 import PropTypes from "prop-types";
 import Container from "../container";
 import {Text} from "../typography";
 import Gap from "../gap";
+import style from "../../styles/modules/input/InputTextArea.scss";
 
 export default class InputTextArea extends PureComponent {
 
@@ -37,32 +37,14 @@ export default class InputTextArea extends PureComponent {
     };
     this.onBlur = this.onBlur.bind(this);
     this.onInput = this.onInput.bind(this);
-    this.inputRef = React.createRef();
+    this.contentEditable = React.createRef();
   }
 
   focus() {
     this.setState({
       focus: true,
     });
-    ReactDOM.findDOMNode(this.inputRef.current).focus();
-  }
-
-  setCaretToEnd() {
-    const node = ReactDOM.findDOMNode(this.inputRef.current);
-    const range = document.createRange();
-    const sel = window.getSelection();
-    range.selectNodeContents(node);
-    range.collapse(false);
-    sel.removeAllRanges();
-    sel.addRange(range);
-    //node.focus();
-    range.detach();
-  }
-
-  componentDidUpdate() {
-    const node = ReactDOM.findDOMNode(this.inputRef.current);
-    node.innerHTML = this.sanitize();
-    this.setCaretToEnd();
+    this.contentEditable.current.focus();
   }
 
   sanitize(initValue) {
@@ -70,28 +52,27 @@ export default class InputTextArea extends PureComponent {
     return sanitizeHtml(initValue || value, sanitizeRule);
   }
 
-  onBlur() {
-    this.setState({
-      focus: false,
-    });
-  }
-
-  onInput(e) {
-    const node = ReactDOM.findDOMNode(this.inputRef.current);
-    const html = e.target.innerHTML.trim();
+  onBlur(e) {
+    const {onChange} = this.props;
+    let html = e.target.innerHTML;
     if (!html) {
-      node.innerHTML = "";
+      html = "";
     } else {
       if (html === "<br>") {
-        node.innerHTML = "";
+        html = "";
       } else {
-        node.innerHTML = this.sanitize(e.target.innerHTML);
+        html = this.sanitize(e.target.innerHTML);
       }
     }
-    this.setCaretToEnd();
+    if (onChange) {
+      onChange(html);
+    }
+  }
+
+  onInput(evt) {
     const {onChange} = this.props;
     if (onChange) {
-      onChange(e);
+      onChange(evt.target.value);
     }
   }
 
@@ -118,12 +99,14 @@ export default class InputTextArea extends PureComponent {
           </Gap>
         </Container>
         }
-        <Container
-          contentEditable="true"
-          suppressContentEditableWarning="true"
+        <ContentEditable
+          innerRef={this.contentEditable}
           className={inputClassNames}
-          ref={this.inputRef}
-          onInput={this.onInput}/>
+          tagName="pre"
+          html={value}
+          onBlur={this.onBlur}
+          onChange={this.onInput}
+        />
       </Container>
     );
   }
