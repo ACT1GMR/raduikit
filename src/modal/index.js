@@ -36,14 +36,14 @@ export default class extends Component {
   }
 
   render() {
-    const {isOpen, inContainer, fullScreen} = this.props;
+    const {isOpen, inContainer, fullScreen, ...other} = this.props;
     const classNames = classnames({
       [style.Modal]: true,
       [style["Modal--inContainer"]]: inContainer,
       [style["Modal--fullScreen"]]: fullScreen
     });
     return isOpen ?
-      <Container className={classNames} ref={this.container}>
+      <Container className={classNames} ref={this.container} {...other}>
         <Container className={style.Modal__Overlay} onClick={this.handleClickOutside}/>
         <Container className={style.Modal__Content}>
           {this.props.children}

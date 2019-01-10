@@ -58,6 +58,7 @@ export default class InputTextArea extends PureComponent {
     if (!html) {
       html = "";
     } else {
+      html = html.trim();
       if (html === "<br>") {
         html = "";
       } else {

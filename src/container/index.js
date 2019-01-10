@@ -3,6 +3,13 @@ import PropTypes from "prop-types";
 import style from "../../styles/modules/container/index.scss"
 import classnames from "classnames";
 
+function capitalizeFirstLetter(string) {
+  if(!string) {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 export default class  Container extends PureComponent {
 
   static propTypes = {
@@ -30,6 +37,8 @@ export default class  Container extends PureComponent {
     topCenter: PropTypes.bool,
     onMouseOver: PropTypes.func,
     onMouseLeave: PropTypes.func,
+    userSelect: PropTypes.oneOf(["none", "text", "all"]),
+    cursor: PropTypes.oneOf(["pointer", "text"]),
   };
 
   static defaultProps = {
@@ -55,7 +64,9 @@ export default class  Container extends PureComponent {
     bottomCenter: false,
     topRight: false,
     topLeft: false,
-    topCenter: false
+    topCenter: false,
+    userSelect: null,
+    cursor: null
   };
 
   constructor(props) {
@@ -86,6 +97,8 @@ export default class  Container extends PureComponent {
       topRight,
       topLeft,
       topCenter,
+      userSelect,
+      cursor,
       ...other
     } = this.props;
     let classNames = classnames({
@@ -110,6 +123,8 @@ export default class  Container extends PureComponent {
       [style["Container--topRight"]]: topRight,
       [style["Container--topLeft"]]: topLeft,
       [style["Container--topCenter"]]: topCenter,
+      [style[`Container--userSelect${capitalizeFirstLetter(userSelect)}`]]: userSelect,
+      [style[`Container--cursor${capitalizeFirstLetter(cursor)}`]]: cursor,
       [className]: className
     });
     return (
