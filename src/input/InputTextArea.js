@@ -78,7 +78,7 @@ export default class InputTextArea extends PureComponent {
   }
 
   render() {
-    const {value, placeholder, className, inputClassName} = this.props;
+    const {value, placeholder, className, inputClassName, onKeyPress} = this.props;
     const {focus} = this.state;
     const hasValue = value && value.trim();
     const classNames = classnames({
@@ -104,9 +104,10 @@ export default class InputTextArea extends PureComponent {
           innerRef={this.contentEditable}
           className={inputClassNames}
           tagName="pre"
-          html={value}
+          html={value || ""}
           onBlur={this.onBlur}
           onChange={this.onInput}
+          onKeyPress={onKeyPress}
         />
       </Container>
     );

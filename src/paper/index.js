@@ -8,18 +8,13 @@ import Container from "../container";
 export default class Paper extends PureComponent {
 
   static propTypes = {
-    borderRadius: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number
-    ]),
+    hasShadow: PropTypes.bool,
     colorBackgroundDark: PropTypes.bool,
     colorBackgroundLight: PropTypes.bool,
-    colorBackground: PropTypes.bool,
-    hasShadow: PropTypes.bool,
+    colorBackground: PropTypes.bool
   };
 
   static defaultProps = {
-    borderRadius: 0,
     hasShadow: false,
     colorBackgroundDark: false,
     colorBackgroundLight: false,
@@ -31,7 +26,7 @@ export default class Paper extends PureComponent {
   };
 
   render() {
-    const {borderRadius, colorBackgroundLight, colorBackgroundDark, colorBackground, hasShadow} = this.props;
+    const {colorBackgroundLight, colorBackgroundDark, colorBackground, hasShadow, ...other} = this.props;
     let classNames = classnames({
       [style.Paper]: true,
       [style["Paper--colorBackgroundLight"]]: colorBackgroundLight,
@@ -40,7 +35,7 @@ export default class Paper extends PureComponent {
       [style["paper--hasShadow"]]: hasShadow
     });
     return (
-      <Container className={classNames} style={{borderRadius}}>
+      <Container className={classNames} {...other}>
         {this.props.children}
       </Container>
     );

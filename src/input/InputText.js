@@ -10,13 +10,17 @@ export default class InputText extends PureComponent {
   static propTypes = {
     value: PropTypes.string,
     className: PropTypes.string,
+    inputClassName: PropTypes.string,
     onChange: PropTypes.func,
-    placeholder: PropTypes.string
+    placeholder: PropTypes.string,
+    max: PropTypes.number
   };
 
   static defaultProps = {
     value: "",
+    max: null,
     className: null,
+    inputClassName: null,
     onChange: e => {
     },
     placeholder: null
@@ -52,16 +56,21 @@ export default class InputText extends PureComponent {
   }
 
   render() {
-    const {value, onChange, placeholder, className} = this.props;
+    const {value, onChange, placeholder, className, inputClassName, max} = this.props;
     const {focus} = this.state;
     const classNames = classnames({
       [style.InputText]: true,
       [style["InputText--focus"]]: focus,
       [className]: className
     });
+    const inputClassNames = classnames({
+      [style.InputText__Input]: true,
+      [inputClassName]: inputClassName
+    });
     return (
       <Container className={classNames}>
-        <input className={style.InputText__Input}
+        <input className={inputClassNames}
+               maxLength={max}
                ref={this.inputRef}
                onChange={onChange}
                onFocus={this.onFocus}

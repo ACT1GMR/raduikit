@@ -11,13 +11,15 @@ export default class extends Component {
   static propTypes = {
     isOpen: PropTypes.bool,
     inContainer: PropTypes.bool,
-    fullScreen: PropTypes.bool
+    fullScreen: PropTypes.bool,
+    wrapContent: PropTypes.bool
   };
 
   static defaultProps = {
     isOpen: false,
     inContainer: false,
-    fullScreen: false
+    fullScreen: false,
+    wrapContent: false
   };
 
   constructor(props) {
@@ -36,16 +38,21 @@ export default class extends Component {
   }
 
   render() {
-    const {isOpen, inContainer, fullScreen, ...other} = this.props;
+    const {isOpen, inContainer, fullScreen, wrapContent, ...other} = this.props;
     const classNames = classnames({
       [style.Modal]: true,
       [style["Modal--inContainer"]]: inContainer,
       [style["Modal--fullScreen"]]: fullScreen
     });
+
+    const classNamesModalContent = classnames({
+      [style.Modal__Content]: true,
+      [style["Modal__Content--wrapContent"]]: wrapContent
+    });
     return isOpen ?
       <Container className={classNames} ref={this.container} {...other}>
         <Container className={style.Modal__Overlay} onClick={this.handleClickOutside}/>
-        <Container className={style.Modal__Content}>
+        <Container className={classNamesModalContent}>
           {this.props.children}
         </Container>
       </Container>

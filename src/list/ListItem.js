@@ -79,7 +79,7 @@ class ListItem extends Component {
       [style["ListItem--invert"]]: invert,
     });
     return (
-      <li className={classNames} onClick={this.onClick}>
+      <li className={classNames} onMouseDown={this.onClick}>
         {children}
         {activeWithTick && active ?
           <Container centerLeft>

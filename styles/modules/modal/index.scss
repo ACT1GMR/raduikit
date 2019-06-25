@@ -40,15 +40,27 @@
   flex-direction: column;
 }
 
+
+.Modal__Content--wrapContent {
+  border-radius: 5px;
+  min-height: 0;
+  margin: 0 5px;
+}
+
 @include responsive("md") {
 
   .Modal:not(.Modal--fullScreen).Modal {
     padding: 20px 0;
   }
 
-  .Modal:not(.Modal--fullScreen) > .Modal__Content {
+  .Modal:not(.Modal--fullScreen) > .Modal__Content
+  {
     border-radius: 5px;
     width: 480px;
     min-height: 0;
   }
+  .Modal__Content--wrapContent {
+    margin: 0 auto;
+  }
+
 }
