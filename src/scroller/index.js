@@ -51,14 +51,14 @@ export default class extends PureComponent {
     const {children: oldChildren} = oldProps;
     const {children} = this.props;
     if (this._onScrollTopThresholdReached) {
-      if (oldChildren !== children) {
-        const current = ReactDOM.findDOMNode(this.scrollerNode.current);
-        this._onScrollTopThresholdReached = false;
-        current.scrollTop =
-          current.scrollHeight -
-          this._beforeScrollHeight +
-          this._beforeScrollTop;
-      }
+      /*      if (oldChildren !== children) {
+              const current = ReactDOM.findDOMNode(this.scrollerNode.current);
+              this._onScrollTopThresholdReached = false;
+              current.scrollTop =
+                current.scrollHeight -
+                this._beforeScrollHeight +
+                this._beforeScrollTop;
+            }*/
     }
   }
 
@@ -73,11 +73,49 @@ export default class extends PureComponent {
   gotoElement(elementId) {
     const current = ReactDOM.findDOMNode(this.scrollerNode.current);
     const elem = current.querySelector(`#${elementId}`);
-    if(!elem) {
+    if (!elem) {
       return false;
     }
     elem.scrollIntoView();
     return true;
+  }
+
+  getInfo() {
+    const {threshold} = this.props;
+    const current = ReactDOM.findDOMNode(this.scrollerNode.current);
+    if (!current) {
+      return;
+    }
+    const scrollHeight = current.scrollHeight;
+    const scrollTop = current.scrollTop;
+    const scrollPosition = current.offsetHeight + scrollTop;
+    const info = {
+      isInBottomEnd: false,
+      isInTopEnd: false,
+      isInBottomThreshold: false,
+      isInTopThreshold: false,
+      isScrollingTop: false,
+      isScrollingBottom: false,
+      scrollHeight,
+      scrollTop,
+      scrollPosition
+    };
+    if (scrollPosition >= scrollHeight) {
+      info.isInBottomEnd = true;
+    }
+    if (scrollPosition > this.lastScrollPosition) {
+      info.isScrollingBottom = true;
+      if (scrollPosition >= scrollHeight - (scrollHeight / threshold)) {
+        info.isInBottomThreshold = true;
+      }
+    } else if (scrollPosition < this.lastScrollPosition) {
+      info.isScrollingTop = true;
+      if (scrollPosition <= (scrollHeight / threshold)) {
+        info.isInTopThreshold = true;
+      }
+    }
+    return info;
+
   }
 
   onScroll() {
@@ -86,32 +124,31 @@ export default class extends PureComponent {
     if (!current) {
       return;
     }
-    const scrollHeight = current.scrollHeight;
-    const scrollTop = current.scrollTop;
-    const scrollPosition = current.offsetHeight + scrollTop;
-    if (scrollPosition >= scrollHeight) {
+    const info = this.getInfo();
+    const {isInBottomEnd, isInTopEnd, isInBottomThreshold, isInTopThreshold, isScrollingTop, isScrollingBottom, scrollHeight, scrollTop, scrollPosition} = info;
+    if (isInBottomEnd) {
       if (onScrollBottomEnd) {
         onScrollBottomEnd();
       }
     }
-    if (scrollPosition > this.lastScrollPosition) {
+    if (isScrollingBottom) {
       if (onScrollBottom) {
         onScrollBottom();
       }
       if (onScrollBottomThreshold) {
         if (onScrollBottomThresholdCondition === null || onScrollBottomThresholdCondition) {
-          if (scrollPosition >= (scrollHeight / threshold)) {
+          if (isInBottomThreshold) {
             onScrollBottomThreshold();
           }
         }
       }
-    } else if (scrollPosition < this.lastScrollPosition) {
+    } else if (isScrollingTop) {
       if (onScrollTop) {
         onScrollTop();
       }
       if (onScrollTopThreshold) {
         if (onScrollTopThresholdCondition === null || onScrollTopThresholdCondition)
-          if (scrollPosition <= (scrollHeight / threshold)) {
+          if (isInTopThreshold) {
             this._beforeScrollHeight = scrollHeight;
             this._beforeScrollTop = scrollTop;
             this._onScrollTopThresholdReached = true;
@@ -130,7 +167,7 @@ export default class extends PureComponent {
     });
     return (
       <Container className={classNames} onScroll={this.onScroll} ref={this.scrollerNode}>
-        {this.props.children}
+        {children}
       </Container>
     );
   }

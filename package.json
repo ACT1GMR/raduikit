@@ -63,6 +63,7 @@
     "prop-types": "^15.6.2",
     "react-contenteditable": "^3.2.4",
     "react-icons": "^2.2.7",
-    "sanitize-html": "^1.19.3"
+    "sanitize-html": "^1.19.3",
+    "react-infinite-scroller": "^1.2.4"
   }
 }
