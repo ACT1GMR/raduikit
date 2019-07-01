@@ -50,15 +50,12 @@ export default class extends PureComponent {
   componentDidUpdate(oldProps) {
     const {children: oldChildren} = oldProps;
     const {children} = this.props;
-    if (this._onScrollTopThresholdReached) {
-      /*      if (oldChildren !== children) {
-              const current = ReactDOM.findDOMNode(this.scrollerNode.current);
-              this._onScrollTopThresholdReached = false;
-              current.scrollTop =
-                current.scrollHeight -
-                this._beforeScrollHeight +
-                this._beforeScrollTop;
-            }*/
+      if (oldChildren !== children) {
+        const current = ReactDOM.findDOMNode(this.scrollerNode.current);
+        const info = this.getInfo();
+        if (current.scrollTop <= 0) {
+          current.scrollTop = 150
+        }
     }
   }
 
@@ -103,6 +100,7 @@ export default class extends PureComponent {
     if (scrollPosition >= scrollHeight) {
       info.isInBottomEnd = true;
     }
+
     if (scrollPosition > this.lastScrollPosition) {
       info.isScrollingBottom = true;
       if (scrollPosition >= scrollHeight - (scrollHeight / threshold)) {
@@ -110,7 +108,7 @@ export default class extends PureComponent {
       }
     } else if (scrollPosition < this.lastScrollPosition) {
       info.isScrollingTop = true;
-      if (scrollPosition <= (scrollHeight / threshold)) {
+      if (scrollTop <= (scrollHeight / threshold)) {
         info.isInTopThreshold = true;
       }
     }
@@ -149,9 +147,6 @@ export default class extends PureComponent {
       if (onScrollTopThreshold) {
         if (onScrollTopThresholdCondition === null || onScrollTopThresholdCondition)
           if (isInTopThreshold) {
-            this._beforeScrollHeight = scrollHeight;
-            this._beforeScrollTop = scrollTop;
-            this._onScrollTopThresholdReached = true;
             onScrollTopThreshold();
           }
       }
