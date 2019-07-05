@@ -24,13 +24,13 @@ export default class Avatar extends PureComponent {
   }
 
   render() {
-    let {left, children} = this.props;
+    let {left, children, ...other} = this.props;
     let classNames = classnames({
       [style["Avatar--left"]]: left
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <Container className={`${style.Avatar} ${classNames}`}>
+      <Container className={`${style.Avatar} ${classNames}`} {...other}>
         {children}
       </Container>
     )

@@ -14,3 +14,15 @@
 .Divider--colorGray {
   background-color: $color-gray;
 }
+
+.Divider--colorGrayLight {
+  background-color: $color-gray-light;
+}
+
+.Divider--colorBackground {
+  background-color: $color-background;
+}
+
+.Divider--shadowInset {
+  box-shadow: 0 1px 3px rgba(0,0,0,.08) inset;
+}
