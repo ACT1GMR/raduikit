@@ -26,7 +26,7 @@ export default class AvatarName extends PureComponent {
   };
 
   render() {
-    let {size, invert, bottom, children, fontWeight} = this.props;
+    let {size, invert, bottom, children, fontWeight, ...other} = this.props;
     let classNames = classnames({
       [style["AvatarName--invert"]]: invert,
       [style["AvatarName--bottom"]]: bottom,
@@ -37,7 +37,7 @@ export default class AvatarName extends PureComponent {
     });
     if (classNames) classNames = ` ${classNames}`;
     return (
-      <Container className={`${style.AvatarName} ${classNames}`}>{children}</Container>
+      <Container className={`${style.AvatarName} ${classNames}`} {...other}>{children}</Container>
     );
   }
 }
