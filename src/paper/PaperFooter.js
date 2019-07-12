@@ -10,9 +10,10 @@ export default class PaperFooter extends PureComponent {
   };
 
   render() {
+    const {children, ...other} = this.props;
     return (
-      <Container className={style.PaperFooter}>
-        {this.props.children}
+      <Container className={style.PaperFooter} {...other}>
+        {children}
       </Container>
     );
   };
