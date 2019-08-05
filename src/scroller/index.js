@@ -67,6 +67,14 @@ export default class extends PureComponent {
     current.scrollTop = current.scrollHeight;
   }
 
+  gotoTop() {
+    const current = ReactDOM.findDOMNode(this.scrollerNode.current);
+    if (!current) {
+      return;
+    }
+    current.scrollTop = 0;
+  }
+
   gotoElement(elementId) {
     const current = ReactDOM.findDOMNode(this.scrollerNode.current);
     const elem = current.querySelector(`#${elementId}`);
