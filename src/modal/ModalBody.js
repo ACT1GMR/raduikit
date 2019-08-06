@@ -1,7 +1,7 @@
 // src/modal/ModalBody
 import React, {Component} from "react";
-import style from "../../styles/modules/modal/ModalBody.scss";
 import Scroller from "../scroller";
+import style from "../../styles/modules/modal/ModalBody.scss";
 
 export default class ModalBody extends Component {
 
