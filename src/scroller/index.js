@@ -1,10 +1,10 @@
 // src/gap/index
 import React, {PureComponent} from "react";
 import ReactDOM from "react-dom";
-import style from "../../styles/modules/scroller/index.scss";
 import classnames from "classnames";
 import PropTypes from 'prop-types';
 import Container from "../container";
+import style from "../../styles/modules/scroller/index.scss";
 
 const strings = {
   THRESHOLD_UNIT_MULTIPLY: "THRESHOLD_UNIT_MULTIPLY",
@@ -49,13 +49,15 @@ export default class extends PureComponent {
 
   componentDidUpdate(oldProps) {
     const {children: oldChildren} = oldProps;
-    const {children} = this.props;
+    const {children, checkForSnapping} = this.props;
+    if (checkForSnapping) {
       if (oldChildren !== children) {
         const current = ReactDOM.findDOMNode(this.scrollerNode.current);
         const info = this.getInfo();
         if (current.scrollTop <= 0) {
-          current.scrollTop = 150
+          current.scrollTop = 250
         }
+      }
     }
   }
 
@@ -155,6 +157,7 @@ export default class extends PureComponent {
       if (onScrollTopThreshold) {
         if (onScrollTopThresholdCondition === null || onScrollTopThresholdCondition)
           if (isInTopThreshold) {
+            this.onTopThreshod = true;
             onScrollTopThreshold();
           }
       }
