@@ -78,7 +78,7 @@ export default class extends Component {
   }
 
   render() {
-    const {invert, inline, italic, bold, isHTML, wordWrap, size, children, link, linkStyle, linkClearStyle, target, color, dark, light, overflow, whiteSpace, noLineHeight, sanitizeRule, ...other} = this.props;
+    const {className, invert, inline, italic, bold, isHTML, wordWrap, size, children, link, linkStyle, linkClearStyle, target, color, dark, light, overflow, whiteSpace, noLineHeight, sanitizeRule, ...other} = this.props;
     let colorClassNames = "";
     if (color) {
       colorClassNames = `Text--color${capitalizeFirstLetter(color)}`;
@@ -105,6 +105,7 @@ export default class extends Component {
       [style["Text--sm"]]: (size === "sm"),
       [style["Text--lg"]]: (size === "lg"),
       [style["Text--xlg"]]: (size === "xlg"),
+      [className]: className
     });
     if (link) {
       return <a href={link} className={classNames} target={target} {...other}>{children}</a>

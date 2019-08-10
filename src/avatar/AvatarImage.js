@@ -29,7 +29,7 @@ export default class AvatarImage extends PureComponent {
   };
 
   render() {
-    let {src, size, customSize, text, textBg} = this.props;
+    let {src, size, customSize, text, textBg, children} = this.props;
     let classNames = classnames({
       [style.AvatarImage]: true,
       [style["AvatarImage--sm"]]: (size === "sm"),
@@ -42,12 +42,13 @@ export default class AvatarImage extends PureComponent {
     }
     return (
       <Container className={classNames} style={inlineStyle} relative>
+        {src && <Container relative style={{backgroundImage: `url('${src}')`}} className={style.AvatarImage__Image}/>}
         <Container style={{backgroundColor: textBg}} className={style.AvatarImage__TextContainer}>
           <Container center>
             <Text bold color="gray" light noLineHeight>{text}</Text>
           </Container>
         </Container>
-        {src && <Container relative style={{backgroundImage: `url('${src}')`}} className={style.AvatarImage__Image}/>}
+        {children && children}
       </Container>
     );
   }
