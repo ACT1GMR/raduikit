@@ -44,7 +44,14 @@ export default class InputTextArea extends PureComponent {
     this.setState({
       focus: true,
     });
-    this.contentEditable.current.focus();
+    const elem = this.contentEditable.current;
+    elem.focus();
+    const range = document.createRange();
+    range.selectNodeContents(elem);
+    range.collapse(false);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
   }
 
   sanitize(initValue) {
@@ -66,7 +73,7 @@ export default class InputTextArea extends PureComponent {
       }
     }
     if (onChange) {
-      onChange(html);
+      onChange(html, true);
     }
   }
 
