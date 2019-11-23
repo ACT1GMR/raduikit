@@ -58,25 +58,6 @@ export default class extends Component {
     this.node = React.createRef();
   }
 
-  _updateValue() {
-    const {isHTML, children, sanitizeRule} = this.props;
-    let value = children;
-    if (isHTML) {
-      if (sanitizeRule) {
-        value = sanitizeHtml(value, sanitizeRule);
-      }
-      this.node.current.innerHTML = value;
-    }
-  }
-
-  componentDidMount() {
-    this._updateValue();
-  }
-
-  componentDidUpdate() {
-    this._updateValue();
-  }
-
   render() {
     const {className, invert, inline, italic, bold, isHTML, wordWrap, size, children, link, linkStyle, linkClearStyle, target, color, dark, light, overflow, whiteSpace, noLineHeight, sanitizeRule, ...other} = this.props;
     let colorClassNames = "";
@@ -111,7 +92,8 @@ export default class extends Component {
       return <a href={link} className={classNames} target={target} {...other}>{children}</a>
     }
     if (isHTML) {
-      return <p className={classNames} {...other} ref={this.node}/>
+      return <p className={classNames} {...other}
+                dangerouslySetInnerHTML={{__html: sanitizeRule ? sanitizeHtml(children, sanitizeRule) : children}}/>
     }
     return <p className={classNames} {...other}>{children}</p>
   }

@@ -108,14 +108,14 @@ export default class InputTextArea extends PureComponent {
         </Container>
         }
         <ContentEditable
+          onPaste={e=>e.stopPropagation()}
           innerRef={this.contentEditable}
           className={inputClassNames}
           tagName="pre"
           html={value || ""}
           onBlur={this.onBlur}
           onChange={this.onInput}
-          onKeyPress={onKeyPress}
-        />
+          onKeyPress={onKeyPress}/>
       </Container>
     );
   }
