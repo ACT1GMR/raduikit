@@ -46,3 +46,5 @@ export default class Dropdown extends Component {
       : ""
   }
 }
+
+export {default as DropdownItem} from "./DropdownItem";

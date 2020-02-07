@@ -1,0 +1,9 @@
+.ContextItem {
+  padding: 9px 8px;
+  font-size: $font-size-base;
+  cursor: pointer;
+}
+
+.ContextItem:hover {
+  background-color: $color-text-invert;
+}
