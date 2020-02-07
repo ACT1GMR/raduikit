@@ -17,7 +17,10 @@ export default class InputTextArea extends PureComponent {
     onChange: PropTypes.func,
     placeholder: PropTypes.string,
     className: PropTypes.string,
-    inputClassName: PropTypes.string
+    inputClassName: PropTypes.string,
+    onKeyDown: PropTypes.func,
+    onKeyPress: PropTypes.func,
+    onKeyUp: PropTypes.func
   };
 
   static defaultProps = {
@@ -25,6 +28,9 @@ export default class InputTextArea extends PureComponent {
     sanitizeRule: null,
     className: null,
     inputClassName: null,
+    onKeyDown: null,
+    onKeyPress: null,
+    onKeyUp: null,
     onChange: e => {
     },
     placeholder: null
@@ -35,9 +41,20 @@ export default class InputTextArea extends PureComponent {
     this.state = {
       focus: false,
     };
+    this.lastCarretPosition = 0;
     this.onBlur = this.onBlur.bind(this);
     this.onInput = this.onInput.bind(this);
+    this.onFocus = this.onFocus.bind(this);
     this.contentEditable = React.createRef();
+  }
+
+  componentDidMount() {
+    const elem = this.contentEditable.current;
+    elem.addEventListener("paste", function(e) {
+      e.preventDefault();
+      var text = e.clipboardData.getData("text/plain");
+      document.execCommand("insertHTML", false, text);
+    });
   }
 
   focus() {
@@ -59,8 +76,32 @@ export default class InputTextArea extends PureComponent {
     return sanitizeHtml(initValue || value, sanitizeRule);
   }
 
+
+  getCaretPosition() {
+    const element = this.contentEditable.current;
+    const range = window.getSelection().getRangeAt(0);
+    const preCaretRange = range.cloneRange();
+    preCaretRange.selectNodeContents(element);
+    preCaretRange.setEnd(range.endContainer, range.endOffset);
+    const {childNodes} = preCaretRange.cloneContents();
+    let cursorPoint = 0;
+    for (const child of childNodes) {
+      if (child.nodeType === 1) {
+        cursorPoint += child.outerHTML.length;
+      } else if (child.nodeType === 3) {
+        cursorPoint += child.textContent.length;
+      }
+    }
+    return cursorPoint;
+  }
+
+  getLastCaretPosition() {
+    return this.lastCarretPosition;
+  }
+
   onBlur(e) {
     const {onChange} = this.props;
+    this.lastCarretPosition = this.getCaretPosition();
     let html = e.target.innerHTML;
     if (!html) {
       html = "";
@@ -84,8 +125,15 @@ export default class InputTextArea extends PureComponent {
     }
   }
 
+  onFocus(evt) {
+    const {onFocus} = this.props;
+    if (onFocus) {
+      onFocus(evt.target);
+    }
+  }
+
   render() {
-    const {value, placeholder, className, inputClassName, onKeyPress} = this.props;
+    const {value, placeholder, className, inputClassName, onKeyPress, onKeyDown, onKeyUp} = this.props;
     const {focus} = this.state;
     const hasValue = value && value.trim();
     const classNames = classnames({
@@ -108,14 +156,16 @@ export default class InputTextArea extends PureComponent {
         </Container>
         }
         <ContentEditable
-          onPaste={e=>e.stopPropagation()}
+          onFocus={this.onFocus}
           innerRef={this.contentEditable}
           className={inputClassNames}
           tagName="pre"
           html={value || ""}
           onBlur={this.onBlur}
           onChange={this.onInput}
-          onKeyPress={onKeyPress}/>
+          onKeyPress={onKeyPress}
+          onKeyUp={onKeyUp}
+          onKeyDown={onKeyDown}/>
       </Container>
     );
   }

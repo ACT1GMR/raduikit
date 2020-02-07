@@ -59,7 +59,7 @@ export default class extends PureComponent {
     const {children: oldChildren} = oldProps;
     const {children, checkForSnapping} = this.props;
     if (checkForSnapping) {
-      if (oldChildren !== children) {
+      if (oldChildren.props.children.length !==  children.props.children.length) {
         const current = ReactDOM.findDOMNode(this.scrollerNode.current);
         const info = this.getInfo();
         if (current.scrollTop <= 0) {
