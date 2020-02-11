@@ -52,12 +52,12 @@ class ListItem extends Component {
     if (onDeselect) {
       if (multiple) {
         if (active) {
-          return onDeselect();
+          return onDeselect(e);
         }
       }
     }
     if (onSelect) {
-      onSelect();
+      onSelect(e);
     }
   }
 
