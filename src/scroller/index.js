@@ -134,11 +134,14 @@ export default class extends PureComponent {
 
   }
 
-  onScroll() {
-    const {onScrollBottomEnd, onScrollBottom, onScrollTop, onScrollBottomThreshold, onScrollTopThreshold, threshold, onScrollBottomThresholdCondition, onScrollTopThresholdCondition} = this.props;
+  onScroll(e) {
+    const {onScroll, onScrollBottomEnd, onScrollBottom, onScrollTop, onScrollBottomThreshold, onScrollTopThreshold, threshold, onScrollBottomThresholdCondition, onScrollTopThresholdCondition} = this.props;
     const current = ReactDOM.findDOMNode(this.scrollerNode.current);
     if (!current) {
       return;
+    }
+    if(onScroll) {
+      onScroll(e);
     }
     const info = this.getInfo();
     const {isInBottomEnd, isInTopEnd, isInBottomThreshold, isInTopThreshold, isScrollingTop, isScrollingBottom, scrollHeight, scrollTop, scrollPosition} = info;
@@ -174,7 +177,7 @@ export default class extends PureComponent {
   }
 
   render() {
-    const {threshold, thresholdUnit, className, children} = this.props;
+    const {className, children} = this.props;
     let classNames = classnames({
       [style.Scroller]: true,
       [style["Scroller--mobileVersion"]]: mobileCheck(),

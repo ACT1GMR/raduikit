@@ -1,21 +1,34 @@
 // src/menu/contextmenu
 import React, {Component} from "react";
-import {ContextMenu, hideMenu} from "react-contextmenu";
+import {ContextMenu, hideMenu, showMenu} from "react-contextmenu";
 import style from "../../styles/modules/menu/Context.scss";
+import PropTypes from "prop-types";
+import classnames from "classnames";
 
 export default class Context extends Component {
+
+  static propTypes = {
+    contextRef: PropTypes.object,
+    stickyHeader: PropTypes.bool
+  };
+
+  static defaultProps = {
+    contextRef: null,
+    stickyHeader: false
+
+  };
 
   constructor(props) {
     super(props);
   }
 
-  hideMenu(e){
-    hideMenu(e);
-  }
-
   render() {
-    const {contextRef, children, ...other} = this.props;
-    return <ContextMenu className={style.Context} ref={contextRef} {...other}>{children}</ContextMenu>;
+    const {contextRef, stickyHeader, children, ...other} = this.props;
+    let classNames = classnames({
+      [style.Context]: true,
+      [style["Context--stickyHeader"]]: stickyHeader
+    });
+    return <ContextMenu className={classNames} ref={contextRef} {...other}>{children}</ContextMenu>;
   }
 }
 export {default as ContextItem} from "./ContextItem";
