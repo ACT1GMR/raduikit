@@ -26,13 +26,14 @@ export default class Paper extends PureComponent {
   };
 
   render() {
-    const {colorBackgroundLight, colorBackgroundDark, colorBackground, hasShadow, ...other} = this.props;
+    const {colorBackgroundLight, colorBackgroundDark, colorBackground, hasShadow, cssClassNames, ...other} = this.props;
     let classNames = classnames({
       [style.Paper]: true,
       [style["Paper--colorBackgroundLight"]]: colorBackgroundLight,
       [style["Paper--colorBackgroundDark"]]: colorBackgroundDark,
       [style["Paper--colorBackground"]]: colorBackground,
-      [style["paper--hasShadow"]]: hasShadow
+      [style["paper--hasShadow"]]: hasShadow,
+      [cssClassNames]: cssClassNames
     });
     return (
       <Container className={classNames} {...other}>

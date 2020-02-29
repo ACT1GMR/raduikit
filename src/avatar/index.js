@@ -12,11 +12,13 @@ function capitalizeFirstLetter(string) {
 export default class Avatar extends PureComponent {
 
   static propTypes = {
-    left: PropTypes.bool
+    left: PropTypes.bool,
+    inline: PropTypes.bool
   };
 
   static defaultProps = {
-    left: false
+    left: false,
+    inline: true
   };
 
   constructor(props) {
@@ -24,13 +26,15 @@ export default class Avatar extends PureComponent {
   }
 
   render() {
-    let {left, children, ...other} = this.props;
+    let {left, inline, children, cssClassNames, ...other} = this.props;
     let classNames = classnames({
-      [style["Avatar--left"]]: left
+      [style.Avatar]: true,
+      [style["Avatar--left"]]: left,
+      [style["Avatar--inline"]]: inline,
+      [cssClassNames]: true
     });
-    if (classNames) classNames = ` ${classNames}`;
     return (
-      <Container className={`${style.Avatar} ${classNames}`} {...other}>
+      <Container className={classNames} {...other}>
         {children}
       </Container>
     )

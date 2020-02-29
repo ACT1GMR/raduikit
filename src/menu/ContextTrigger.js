@@ -9,7 +9,7 @@ export default class ContextTrigger extends Component {
   }
 
   render() {
-    const {children, contextTriggerRef, ...other} = this.props;
-    return <ContextMenuTrigger ref={contextTriggerRef} {...other}>{children}</ContextMenuTrigger>;
+    const {children, contextTriggerRef, id, ...other} = this.props;
+    return <ContextMenuTrigger id={`${id}`} ref={contextTriggerRef} {...other}>{children}</ContextMenuTrigger>;
   }
 }

@@ -23,12 +23,12 @@ export default class Context extends Component {
   }
 
   render() {
-    const {contextRef, stickyHeader, children, ...other} = this.props;
+    const {contextRef, stickyHeader, children, id, ...other} = this.props;
     let classNames = classnames({
       [style.Context]: true,
       [style["Context--stickyHeader"]]: stickyHeader
     });
-    return <ContextMenu className={classNames} ref={contextRef} {...other}>{children}</ContextMenu>;
+    return <ContextMenu id={`${id}`} className={classNames} ref={contextRef} {...other}>{children}</ContextMenu>;
   }
 }
 export {default as ContextItem} from "./ContextItem";
