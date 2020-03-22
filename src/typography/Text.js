@@ -26,7 +26,7 @@ export default class extends Component {
     whiteSpace: PropTypes.oneOf(["pre", "preWrap"]),
     overflow: PropTypes.oneOf(["ellipsis"]),
     size: PropTypes.oneOf(["xs", "sm", "lg", "xlg"]),
-    color: PropTypes.oneOf(["gray", "accent", "green", "yellow", "text"]),
+    color: PropTypes.oneOf(["gray", "accent", "green", "yellow", "text", "red"]),
     dark: PropTypes.bool,
     light: PropTypes.bool,
     target: PropTypes.string

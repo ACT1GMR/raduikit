@@ -62,7 +62,7 @@ class ListItem extends Component {
   }
 
   render() {
-    const {selection, active, activeWithTick, invert, children, activeColor, activeColorLight, activeColorDark, noPadding} = this.props;
+    const {selection, active, activeWithTick, invert, children, activeColor, activeColorLight, activeColorDark, noPaddinguser} = this.props;
     let activeColorClassNames = "";
     if (activeColor) {
       activeColorClassNames = `ListItem--activeColor${capitalizeFirstLetter(activeColor)}`;

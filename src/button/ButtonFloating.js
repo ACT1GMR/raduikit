@@ -39,7 +39,7 @@ export default class ButtonFloating extends PureComponent {
     });
     return (
       <button className={classNames} style={position} {...other}>
-        <Container>
+        <Container className={style.ButtonFloating__Icon}>
           {this.props.children}
         </Container>
       </button>

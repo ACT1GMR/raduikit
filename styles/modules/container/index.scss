@@ -106,6 +106,7 @@
 
 .Container--userSelectNone {
   user-select: none;
+  -webkit-user-select: none;
 }
 
 .Container--userSelectAll {
