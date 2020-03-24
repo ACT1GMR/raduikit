@@ -147,7 +147,7 @@ export default class InputTextArea extends PureComponent {
       [className]: className
     });
     return (
-      <Container className={classNames}>
+      <Container className={classNames} relative={!className}>
         {!hasValue &&
         <Container centerRight>
           <Gap x={15}>

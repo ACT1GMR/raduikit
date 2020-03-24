@@ -50,20 +50,18 @@ export default class extends PureComponent {
     this.onScroll = this.onScroll.bind(this);
     this.scrollerNode = React.createRef();
     this.lastScrollPosition = null;
-    this._beforeScrollHeight = null;
-    this._beforeScrollTop = null;
-    this._onScrollTopThresholdReached = false;
+    this._currentScrollBottom = 0;
   };
 
   componentDidUpdate(oldProps) {
     const {children: oldChildren} = oldProps;
     const {children, checkForSnapping} = this.props;
     if (checkForSnapping) {
-      if (oldChildren.props.children.length !==  children.props.children.length) {
+      if (oldChildren.props.children.length !== children.props.children.length) {
         const current = ReactDOM.findDOMNode(this.scrollerNode.current);
         const info = this.getInfo();
-        if (current.scrollTop <= 0) {
-          current.scrollTop = 250
+        if (info.scrollTop <= 0) {
+          current.scrollTop = info.scrollHeight - this._currentScrollBottom;
         }
       }
     }
@@ -83,6 +81,7 @@ export default class extends PureComponent {
       return;
     }
     current.scrollTop = 0;
+    console.log(this._currentScrollBottom, "GOTO TOP")
   }
 
   gotoElement(elementId) {
@@ -135,15 +134,18 @@ export default class extends PureComponent {
   }
 
   onScroll(e) {
-    const {onScroll, onScrollBottomEnd, onScrollBottom, onScrollTop, onScrollBottomThreshold, onScrollTopThreshold, threshold, onScrollBottomThresholdCondition, onScrollTopThresholdCondition} = this.props;
+    const {onScroll, onScrollBottomEnd, onScrollBottom, onScrollTop, onScrollBottomThreshold, onScrollTopThreshold, threshold, onScrollBottomThresholdCondition, onScrollTopThresholdCondition, checkForSnapping} = this.props;
     const current = ReactDOM.findDOMNode(this.scrollerNode.current);
     if (!current) {
       return;
     }
-    if(onScroll) {
+    if (onScroll) {
       onScroll(e);
     }
     const info = this.getInfo();
+    if (checkForSnapping) {
+      this._currentScrollBottom = info.scrollHeight - info.scrollTop;
+    }
     const {isInBottomEnd, isInTopEnd, isInBottomThreshold, isInTopThreshold, isScrollingTop, isScrollingBottom, scrollHeight, scrollTop, scrollPosition} = info;
     if (isInBottomEnd) {
       if (onScrollBottomEnd) {
@@ -178,6 +180,8 @@ export default class extends PureComponent {
 
   render() {
     const {className, children} = this.props;
+    const current = ReactDOM.findDOMNode(this.scrollerNode.current);
+
     let classNames = classnames({
       [style.Scroller]: true,
       [style["Scroller--mobileVersion"]]: mobileCheck(),
