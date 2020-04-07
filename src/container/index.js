@@ -4,18 +4,22 @@ import style from "../../styles/modules/container/index.scss"
 import classnames from "classnames";
 
 function capitalizeFirstLetter(string) {
-  if(!string) {
+  if (!string) {
     return string;
   }
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export default class  Container extends PureComponent {
+export default class Container extends PureComponent {
 
   static propTypes = {
     id: PropTypes.string,
     maxWidth: PropTypes.string,
     minWidth: PropTypes.string,
+    display: PropTypes.string,
+    alignItems: PropTypes.string,
+    alignContent: PropTypes.string,
+    flex: PropTypes.string,
     inline: PropTypes.bool,
     leftTextAlign: PropTypes.bool,
     centerTextAlign: PropTypes.bool,
@@ -48,6 +52,10 @@ export default class  Container extends PureComponent {
     inline: false,
     leftTextAlign: false,
     centerTextAlign: false,
+    display: null,
+    flex: null,
+    alignItems: null,
+    alignContent: null,
     left: false,
     right: false,
     relative: false,
@@ -99,6 +107,10 @@ export default class  Container extends PureComponent {
       topCenter,
       userSelect,
       cursor,
+      display,
+      flex,
+      alignItems,
+      alignContent,
       ...other
     } = this.props;
     let classNames = classnames({
@@ -128,7 +140,8 @@ export default class  Container extends PureComponent {
       [className]: className
     });
     return (
-      <div id={id} className={classNames} style={{maxWidth, minWidth}} {...other}>
+      <div id={id} className={classNames}
+           style={{maxWidth, minWidth, display, flex, alignItems, alignContent}} {...other}>
         {this.props.children}
       </div>
     );

@@ -7,6 +7,7 @@ export default class extends Component {
 
   static defaultProps = {
     invert: false,
+    id: null,
     h2: false,
     h3: false,
     h4: false,
@@ -18,22 +19,22 @@ export default class extends Component {
   }
 
   render() {
-    const {h2, h3, h4, h5, invert, children} = this.props;
+    const {h2, h3, h4, h5, id, invert, children} = this.props;
     let classNames = classnames({[style["Heading--invert"]]: invert});
     if (classNames) classNames = ` ${classNames}`;
     classNames = `${style.Heading}${classNames}`;
     if (h2) {
-      return <h2 className={classNames}>{children}</h2>
+      return <h2 className={classNames} id={id}>{children}</h2>
     }
     if (h3) {
-      return <h3 className={classNames}>{children}</h3>
+      return <h3 className={classNames} id={id}>{children}</h3>
     }
     if (h4) {
-      return <h4 className={classNames}>{children}</h4>
+      return <h4 className={classNames} id={id}>{children}</h4>
     }
     if (h5) {
-      return <h5 className={classNames}>{children}</h5>
+      return <h5 className={classNames} id={id}>{children}</h5>
     }
-    return <h1 className={classNames}>{children}</h1>
+    return <h1 className={classNames} id={id}>{children}</h1>
   }
 }
