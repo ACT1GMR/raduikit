@@ -140,7 +140,7 @@ export default class extends PureComponent {
       return;
     }
     if (onScroll) {
-      onScroll(e);
+      onScroll(e, current);
     }
     const info = this.getInfo();
     if (checkForSnapping) {
