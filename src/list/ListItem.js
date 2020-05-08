@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import style from "../../styles/modules/list/ListItem.scss";
-import {MdCheck} from "react-icons/lib/md";
+import {MdCheck} from "react-icons/md";
 import Container from "../container";
 
 function capitalizeFirstLetter(string) {

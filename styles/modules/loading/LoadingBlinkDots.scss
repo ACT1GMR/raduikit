@@ -1,5 +1,7 @@
 .LoadingBlinkDots {
   text-align: center;
+  display: inline-flex;
+  align-items: center;
 }
 
 @keyframes blink {
@@ -23,7 +25,6 @@
   animation-fill-mode: both;
   width: 10px;
   height: 10px;
-  display: inline-block;
   margin: 0 2px;
 }
 
