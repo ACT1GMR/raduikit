@@ -48,6 +48,9 @@ class ListItem extends Component {
   }
 
   onClick(e) {
+    if (e.nativeEvent.which === 3) {
+      return;
+    }
     const {multiple, active, onSelect, onDeselect} = this.props;
     if (onDeselect) {
       if (multiple) {
