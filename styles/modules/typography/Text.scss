@@ -139,6 +139,10 @@
   white-space: pre;
 }
 
+.Text--whiteSpaceNoWrap {
+  white-space: nowrap;
+}
+
 .Text--overflowEllipsis {
   overflow: hidden;
   text-overflow: ellipsis;
